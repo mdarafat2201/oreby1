@@ -5,13 +5,16 @@ export default {
     container: {
       center: true,
     },
+    fontFamily: {
+      DMsans: "var(--DMsans)",
+    },
     extend: {
       colors: {
-        main_bg_color: "#ffffff",
-        secondary_bg_color: "#f5f5f3",
-        main_font_color: "#262626",
-        secondary_font_color: "#767676",
-        footer_text_color: "#6d6d6d",
+        main_bg_color: "var(--main_bg_color)",
+        secondary_bg_color: "var(--secondary_bg_color)",
+        main_font_color: "var(--main_font_color)",
+        secondary_font_color: "var(--secondary_font_color)",
+        footer_text_color: "var(--main_bg_color)",
       },
     },
   },
