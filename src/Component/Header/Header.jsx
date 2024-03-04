@@ -15,27 +15,42 @@ const Header = () => {
             <div>
               <Flex className="gap-x-10">
                 <li>
-                  <a href="#" className="menuItem">
+                  <a
+                    href="#"
+                    className="menuItem transition-all hover:text-main_font_color hover:font-bold"
+                  >
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="menuItem ">
+                  <a
+                    href="#"
+                    className="menuItem transition-all hover:text-main_font_color hover:font-bold"
+                  >
                     Shop
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="menuItem ">
+                  <a
+                    href="#"
+                    className="menuItem transition-all hover:text-main_font_color hover:font-bold"
+                  >
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="menuItem ">
+                  <a
+                    href="#"
+                    className="menuItem transition-all hover:text-main_font_color hover:font-bold"
+                  >
                     Contacts
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="menuItem ">
+                  <a
+                    href="#"
+                    className="menuItem transition-all hover:text-main_font_color hover:font-bold"
+                  >
                     Journal
                   </a>
                 </li>

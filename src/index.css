@@ -50,10 +50,5 @@
     font-weight: 400;
     font-family: var(--DMsans);
     color: var(--secondary_font_color);
-    transition: ease-in-out 0.5s;
-  }
-  .menuItem:hover {
-    color: var(--main_font_color);
-    font-weight: 700;
   }
 }
