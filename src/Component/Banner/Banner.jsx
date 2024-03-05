@@ -30,7 +30,7 @@ const Baner = () => {
           <div
             style={{
               width: "30px",
-              padding: "10px 0",
+              padding: "15px 0",
               borderRight: "3px solid #fff",
             }}
           >
