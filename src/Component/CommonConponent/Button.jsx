@@ -1,11 +1,11 @@
-import React, { Children } from "react";
+import React from "react";
 
-const Button = ({ className, Children }) => {
+const Button = ({ className, title }) => {
   return (
     <>
-      <Button className={className ? className : "w-5 h-5 bg-black"}>
-        {Children}
-      </Button>
+      <button className={className ? className : "p-5  bg-black text-white"}>
+        {title ? title : "nei"}
+      </button>
     </>
   );
 };

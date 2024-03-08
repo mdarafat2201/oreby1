@@ -18,9 +18,9 @@ const SeleInfo = () => {
               <div>
                 <h3>Phones Sele</h3>
                 <p>
-                  Up to <span>30%</span> Sele for all phones
+                  Up to <span>40%</span> Sele for all phones
                 </p>
-                <Button />
+                <Button className={""} title="Shop Now" />
               </div>
             </div>
             <div className="w-full">
