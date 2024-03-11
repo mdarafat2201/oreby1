@@ -11,16 +11,23 @@ const SeleInfo = () => {
       <div className="py-32">
         <div className="container">
           <Flex className={"gap-x-10"}>
-            <div className="w-full">
+            <div className="w-full relative">
               <picture>
                 <img src={SeleLeftimg} alt={SeleLeftimg} />
               </picture>
-              <div>
-                <h3>Phones Sele</h3>
-                <p>
-                  Up to <span>40%</span> Sele for all phones
+              <div className="absolute bottom-16 left-16">
+                <h3 className="text-main_font_color font-bold font-DMsans text-[39px]">
+                  Phones Sele
+                </h3>
+                <p className="mt-12 text-main_font_color font-normal font-DMsans text-base opacity-75">
+                  Up to{" "}
+                  <span className="font-bold text-4xl align-middle">40%</span>{" "}
+                  Sele for all phones
                 </p>
-                <Button className={""} title="Shop Now" />
+                <Button
+                  className={"py-4 px-14 bg-main_font_color text-main_bg_color"}
+                  title="Shop Now"
+                />
               </div>
             </div>
             <div className="w-full">
