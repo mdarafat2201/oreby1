@@ -3,8 +3,7 @@ import Flex from "../CommonConponent/Flex";
 import SeleLeftimg from "../../assets/seleLeft img.png";
 import electronicImg from "../../assets/electronicImg.png";
 import FurnitureImg from "../../assets/FurnitureImg.png";
-import Button from "../CommonConponent/Button";
-
+import Overlay from "../CommonConponent/Overlay";
 const SeleInfo = () => {
   return (
     <>
@@ -15,34 +14,42 @@ const SeleInfo = () => {
               <picture>
                 <img src={SeleLeftimg} alt={SeleLeftimg} />
               </picture>
-              <div className="absolute bottom-16 left-16">
-                <h3 className="text-main_font_color font-bold font-DMsans text-[39px]">
-                  Phones Sele
-                </h3>
-                <p className="mt-7 text-main_font_color font-normal font-DMsans text-base opacity-75 mb-8">
-                  Up to{" "}
-                  <span className="font-bold text-4xl align-middle">40%</span>{" "}
-                  Sele for all phones
-                </p>
-                <Button
-                  className={
-                    "py-4 px-14 bg-main_font_color text-main_bg_color hover:bg-slate-700"
-                  }
-                  title="Shop Now"
-                />
-              </div>
+              <Overlay
+                className="absolute bottom-16 left-16"
+                titel="Phones Sele"
+                discountdetilsFost={`Up to`}
+                discountdetilslost={`sele for all Phones!`}
+                discountAmount="30%"
+                btnTitle="Shop Now"
+              />
             </div>
-            <div className="w-full">
+            <div className="w-full ">
               <Flex className={"flex-col gap-y-9"}>
-                <div className="w-full">
+                <div className="w-full relative ">
                   <picture>
                     <img src={electronicImg} alt={electronicImg} />
                   </picture>
+                  <Overlay
+                    className="absolute top-1/2 -translate-y-1/2 left-16"
+                    titel="Electronics Sale"
+                    discountdetilsFost={`Up to`}
+                    discountdetilslost={`sele for all electronics!`}
+                    discountAmount="70%"
+                    btnTitle="Shop Now"
+                  />
                 </div>
-                <div className="w-full">
+                <div className="w-full relative ">
                   <picture>
                     <img src={FurnitureImg} alt={FurnitureImg} />
                   </picture>
+                  <Overlay
+                    className="absolute top-1/2 -translate-y-1/2 left-16"
+                    titel="Furniture offer"
+                    discountdetilsFost={`Up to`}
+                    discountdetilslost={`sele for all Furniture offer!`}
+                    discountAmount="50%"
+                    btnTitle="Shop Now"
+                  />
                 </div>
               </Flex>
             </div>
