@@ -4,6 +4,8 @@ import MenuBar from "../../Component/MenuBar/MenuBar";
 import Banner from "../../Component/Banner/Banner";
 import Shipping from "../../Component/Shipping/Shipping";
 import SeleInfu from "../../Component/SeleInfu/SeleInfu";
+import Arrival from "../../Component/NewArrival/Arrival";
+import SpecialOffer from "../../Component/SpecialOffer/SpecialOffer";
 const Home = () => {
   return (
     <div>
@@ -12,6 +14,8 @@ const Home = () => {
       <Banner />
       <Shipping />
       <SeleInfu />
+      <Arrival />
+      <SpecialOffer />
     </div>
   );
 };
