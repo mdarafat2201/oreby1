@@ -14,13 +14,13 @@ const Overlay = ({
         <h3 className="text-main_font_color font-bold font-DMsans text-[39px]">
           {titel ? titel : "Phones Sele"}
         </h3>
-        <p className="mt-7 text-main_font_color font-normal font-DMsans text-base opacity-75 mb-8">
-          {discountdetilsFost}
+        <p className="mt-7 text-main_font_color font-normal font-DMsans text-base mb-8">
+          <span className="opacity-75">{discountdetilsFost}</span>
 
           <span className="font-bold text-4xl align-middle">
             {discountAmount}
           </span>
-          {discountdetilslost}
+          <span className="opacity-75">{discountdetilslost}</span>
         </p>
         <Button
           className={

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import Card from "../CommonConponent/Card";
 import Button from "../CommonConponent/Button";
-import NewArrivalData from "../../../NewArrivalData/ArrivalData";
+
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 
 // Next Arrow function
@@ -73,15 +73,15 @@ const settings = {
   prevArrow: <SamplePrevArrow />,
 };
 
-const Arrival = () => {
-  const [arrivalData] = useState(NewArrivalData);
+const Arrival = ({ headingTitle, ArrivalData }) => {
+  const [arrivalData] = useState(ArrivalData);
 
   return (
     <>
       <div className=" pb-32">
         <div className="container">
           <h4 className="text-[40px] font-DMsans font-bold text-primaryFontColor pb-12">
-            New Arrivals
+            {headingTitle ? headingTitle : "title massing"}
           </h4>
 
           <Slider {...settings}>
