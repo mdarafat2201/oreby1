@@ -13,7 +13,7 @@ const PhoneOfTheYear = () => {
             </picture>
           </div>
           <div className="w-full ">
-            <div className="flex flex-col items-start gap-y-6">
+            <div className="flex flex-col items-start h-full gap-y-6">
               <h2 className="font-DMsans font-semibold text-[40px] text-main_font_color">
                 Phone of the year
               </h2>

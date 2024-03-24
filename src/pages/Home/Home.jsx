@@ -11,6 +11,7 @@ import {
   BesellingData,
   BestsellerData,
 } from "../../../NewArrivalData/ArrivalData";
+import Footer from "../../Component/Footer/Footer";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
       <Arrival headingTitle="Our Best Selling" ArrivalData={BesellingData} />
       <PhoneOfTheYear />
       <Arrival headingTitle="Special Offers" ArrivalData={BestsellerData} />
+      <Footer />
     </div>
   );
 };
