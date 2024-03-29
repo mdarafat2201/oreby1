@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../assets/Logo.png";
 import Flex from "../CommonConponent/Flex";
+import { RxCross2 } from "react-icons/rx";
+import { FaBars } from "react-icons/fa";
 const Header = () => {
+  const [isShow, setisShow] = useState(false);
+
+  //HandleNavIcon funtionality
+  const HandleNavIcon = () => {
+    setisShow(!isShow);
+  };
+
   return (
     <>
-      <div className="py-8 bg-main_bg_color">
+      <div className="py-8 bg-main_bg_color px-4 px-sm-0">
         <div className="container ">
           <Flex className="justify-between items-center">
             <div>
@@ -13,7 +22,13 @@ const Header = () => {
               </picture>
             </div>
             <div>
-              <Flex className="gap-x-10">
+              <Flex
+                className={`absolute sm:flex-row sm:static sm:gap-x-5 ${
+                  isShow === true
+                    ? "bg-gray-300 text-center  top-[70px] left-0 flex-col w-full z-10 transition-all "
+                    : " left-[-100%]  "
+                } `}
+              >
                 <li>
                   <a
                     href="#"
@@ -56,7 +71,9 @@ const Header = () => {
                 </li>
               </Flex>
             </div>
-            <div></div>
+            <div className="cursor-pointer sm:hidden" onClick={HandleNavIcon}>
+              {isShow === true ? <RxCross2 /> : <FaBars />}
+            </div>
           </Flex>
         </div>
       </div>
