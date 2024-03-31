@@ -3,11 +3,12 @@ import Flex from "../CommonConponent/Flex";
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
 import Serach from "../CommonConponent/Serach";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
-import { TiArrowSortedDown } from "react-icons/ti";
-
+import CartItem from "../../assets/product4.png";
+import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 const MenuBar = () => {
   const [ShowCatagorise, setShowCatagorise] = useState(false);
   const [ShowAccount, setShowAccount] = useState(false);
+  const [Cart, setCart] = useState(false);
   //HandleCatagory function implement
   const HandleCatagory = () => {
     setShowCatagorise(!ShowCatagorise);
@@ -15,6 +16,10 @@ const MenuBar = () => {
   //ShowAccount function implement
   const HandleAccount = () => {
     setShowAccount(!ShowAccount);
+  };
+  //HandleCart function implement
+  const HandleCart = () => {
+    setCart(!Cart);
   };
   return (
     <>
@@ -66,14 +71,20 @@ const MenuBar = () => {
             <Serach placeholder={"Search Products"} />
             <Flex className={" gap-x-2 sm:gap-x-5"}>
               <div onClick={HandleAccount}>
-                <Flex className={"gap-x-1 sm:gap-x-2 cursor-pointer "}>
+                <Flex
+                  className={"gap-x-1 text-center sm:gap-x-2 cursor-pointer "}
+                >
                   <div>
                     <FaUser
                       className={`${ShowAccount ? "text-green-400" : null}`}
                     />
                   </div>
                   <div>
-                    <TiArrowSortedDown />
+                    {ShowAccount === true ? (
+                      <MdKeyboardArrowDown />
+                    ) : (
+                      <MdKeyboardArrowUp />
+                    )}
                   </div>
                 </Flex>
               </div>
@@ -89,9 +100,17 @@ const MenuBar = () => {
                   </ul>
                 </div>
               )}
-
-              <div>
+              <div className=" cursor-pointer" onClick={HandleCart}>
                 <FaShoppingCart />
+              </div>
+              <div className="bg-black text-white absolute top-0 left-0 w-full sm:w-fit">
+                <div className="w-[80px] h-[80px] object-cover">
+                  <img src={CartItem} alt={CartItem} />
+                </div>
+                <div>
+                  <h2>Black Smart Watch</h2>
+                  <span>$44.0</span>
+                </div>
               </div>
             </Flex>
           </Flex>
