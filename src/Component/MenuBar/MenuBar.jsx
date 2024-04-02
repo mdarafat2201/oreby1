@@ -5,6 +5,7 @@ import Serach from "../CommonConponent/Serach";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import CartItem from "../../assets/product4.png";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
+import { Link } from "react-router-dom";
 const MenuBar = () => {
   const [ShowCatagorise, setShowCatagorise] = useState(false);
   const [ShowAccount, setShowAccount] = useState(false);
@@ -41,27 +42,27 @@ const MenuBar = () => {
               {ShowCatagorise && (
                 <div>
                   <ul
-                    className={`bg-main_font_color text-white  text-center absolute z-10 divide-y divide-[#ffffff3f] ${
+                    className={`bg-main_font_color text-white  py-4 absolute z-10 divide-y divide-[#ffffff3f] ${
                       ShowCatagorise === true ? "w-full left-0 top-1/4" : null
                     }`}
                   >
-                    <li className="py-4">
-                      <a href="#">Accesories</a>
+                    <li className="p-4">
+                      <Link to={"/"}>Accesories</Link>
                     </li>
-                    <li className="py-4">
-                      <a href="#">Furniture</a>
+                    <li className="p-4">
+                      <Link to={"/"}>Furniture</Link>
                     </li>
-                    <li className="py-4">
-                      <a href="#">Electronics</a>
+                    <li className="p-4">
+                      <Link to={"/"}>Electronics</Link>
                     </li>
-                    <li className="py-4">
-                      <a href="#">Clothes</a>
+                    <li className="p-4">
+                      <Link to={"/"}>Clothes</Link>
                     </li>
-                    <li className="py-4">
-                      <a href="#">Bags</a>
+                    <li className="p-4">
+                      <Link to={"/"}>Bags</Link>
                     </li>
-                    <li className="py-4">
-                      <a href="#">Home appliances</a>
+                    <li className="p-4">
+                      <Link to={"/"}>Home appliances</Link>
                     </li>
                   </ul>
                 </div>
