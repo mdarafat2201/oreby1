@@ -12,21 +12,41 @@ const MenuBar = () => {
   const [ShowCatagorise, setShowCatagorise] = useState(false);
   const [ShowAccount, setShowAccount] = useState(false);
   const [Cart, setCart] = useState(false);
+  const MenuRef = useState(false);
   //HandleCatagory function implement
   const HandleCatagory = () => {
+    setCart(false);
+    setShowAccount(false);
     setShowCatagorise(!ShowCatagorise);
   };
   //ShowAccount function implement
   const HandleAccount = () => {
+    setShowCatagorise(false);
+    setCart(false);
     setShowAccount(!ShowAccount);
   };
   //HandleCart function implement
   const HandleCart = () => {
+    setShowCatagorise(false);
+    setShowAccount(false);
     setCart(!Cart);
   };
+
+  //Menu Ref funtionlity
+
+  useState(() => {
+    window.addEventListener("click", (e) => {
+      if (!MenuRef.current.contains(e.target)) {
+        setShowCatagorise(false);
+        setShowAccount(false);
+        setCart(false);
+      }
+      //console.log(!MenuRef.current.contains(e.target));
+    });
+  }, []);
   return (
     <>
-      <div className="bg-secondary_bg_color py-5 px-5">
+      <div className="bg-secondary_bg_color py-5 px-5" ref={MenuRef}>
         <div className="container">
           <Flex className={"gap-x-3 justify-between items-center"}>
             <Flex className={"gap-x-3"}>
@@ -133,7 +153,10 @@ const MenuBar = () => {
                       <h2>Black Smart Watch</h2>
                       <span>$44.0</span>
                     </div>
-                    <div className="text-main_font_color">
+                    <div
+                      className={`text-main_font_color `}
+                      onClick={HandleCart}
+                    >
                       <RxCross2 />
                     </div>
                   </Flex>
