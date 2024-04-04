@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Flex from "../CommonConponent/Flex";
 import Button from "../CommonConponent/Button";
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
@@ -12,7 +12,8 @@ const MenuBar = () => {
   const [ShowCatagorise, setShowCatagorise] = useState(false);
   const [ShowAccount, setShowAccount] = useState(false);
   const [Cart, setCart] = useState(false);
-  const MenuRef = useState(false);
+  const MenuRef = useRef();
+
   //HandleCatagory function implement
   const HandleCatagory = () => {
     setCart(false);
@@ -34,14 +35,13 @@ const MenuBar = () => {
 
   //Menu Ref funtionlity
 
-  useState(() => {
+  useEffect(() => {
     window.addEventListener("click", (e) => {
       if (!MenuRef.current.contains(e.target)) {
         setShowCatagorise(false);
         setShowAccount(false);
         setCart(false);
       }
-      //console.log(!MenuRef.current.contains(e.target));
     });
   }, []);
   return (
