@@ -138,55 +138,57 @@ const MenuBar = () => {
                   <FaShoppingCart className={`${Cart && "text-green-500"}`} />
                 </div>
 
-                <div
-                  className={`text-main_bg_color transition-all absolute top-14 z-10  w-[100vw] sm:w-fit ${
-                    Cart ? "right-[-35px]" : "right-[400px]"
-                  }`}
-                >
-                  <Flex
-                    className={"items-center justify-around p-4 bg-[#F5F5F3]"}
+                {Cart && (
+                  <div
+                    className={`text-main_bg_color right-[-35px] absolute top-14 z-10  w-[100vw] sm:w-fit 
+                    
+                  `}
                   >
-                    <div className="w-[80px] h-[80px] object-cover border-2 border-main_font_color ">
-                      <img src={CartItem} alt={CartItem} />
-                    </div>
-                    <div className="text-main_font_color font-DMsans  font-bold font-sm  ">
-                      <h2>Black Smart Watch</h2>
-                      <span>$44.0</span>
-                    </div>
-                    <div
-                      className={`text-main_font_color `}
-                      onClick={HandleCart}
+                    <Flex
+                      className={"items-center justify-around p-4 bg-[#F5F5F3]"}
                     >
-                      <RxCross2 />
-                    </div>
-                  </Flex>
-                  <div className="bg-main_bg_color p-4">
-                    <h2 className="text-secondary_font_color font-DMsans font-normal text-md ml-8">
-                      Subtotal:
-                      <span className="text-main_font_color font-bold ml-1">
-                        $44.00
-                      </span>
-                    </h2>
-                    <Flex className={"justify-around py-5"}>
-                      <div>
-                        <Button
-                          className={
-                            "py-4 px-4 font-DMsans  font-bold font-sm  text-main_font_color border-2 border-main_font_color "
-                          }
-                          title={"View Cart"}
-                        />
+                      <div className="w-[80px] h-[80px] object-cover border-2 border-main_font_color ">
+                        <img src={CartItem} alt={CartItem} />
                       </div>
-                      <div>
-                        <Button
-                          className={
-                            "py-4 px-4 bg-main_font_color text-main_bg_color font-DMsans  font-bold font-sm  "
-                          }
-                          title={"Checkout"}
-                        />
+                      <div className="text-main_font_color font-DMsans  font-bold font-sm  ">
+                        <h2>Black Smart Watch</h2>
+                        <span>$44.0</span>
+                      </div>
+                      <div
+                        className={`text-main_font_color `}
+                        onClick={HandleCart}
+                      >
+                        <RxCross2 />
                       </div>
                     </Flex>
+                    <div className="bg-main_bg_color p-4">
+                      <h2 className="text-secondary_font_color font-DMsans font-normal text-md ml-8">
+                        Subtotal:
+                        <span className="text-main_font_color font-bold ml-1">
+                          $44.00
+                        </span>
+                      </h2>
+                      <Flex className={"justify-around py-5"}>
+                        <div>
+                          <Button
+                            className={
+                              "py-4 px-4 font-DMsans  font-bold font-sm  text-main_font_color border-2 border-main_font_color "
+                            }
+                            title={"View Cart"}
+                          />
+                        </div>
+                        <div>
+                          <Button
+                            className={
+                              "py-4 px-4 bg-main_font_color text-main_bg_color font-DMsans  font-bold font-sm  "
+                            }
+                            title={"Checkout"}
+                          />
+                        </div>
+                      </Flex>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </Flex>
           </Flex>
