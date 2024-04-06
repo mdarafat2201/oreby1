@@ -6,7 +6,7 @@ import { TbReload } from "react-icons/tb";
 const Card = ({ colorVariant, badge, img, productTitle, price }) => {
   return (
     <>
-      <div className="cursor-pointer  w-[90%]">
+      <div className="cursor-pointer px-4  w-full">
         <div className="group relative overflow-hidden">
           <div className="absolute top-5 left-5 text-black">{badge}</div>
 
