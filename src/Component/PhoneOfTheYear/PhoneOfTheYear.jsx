@@ -4,7 +4,7 @@ import PhoneOfTheYearimg from "../../assets/PhoneOfTheYearimg.png";
 import Button from "../CommonConponent/Button";
 const PhoneOfTheYear = () => {
   return (
-    <div className="container pb-32">
+    <div className="container pb-10">
       <div className="py-10 bg-[#F3F3F3]">
         <Flex>
           <div className="w-[40%] ">

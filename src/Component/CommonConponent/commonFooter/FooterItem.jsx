@@ -3,7 +3,7 @@ import React from "react";
 const FooterItem = ({ allitem = ["one", "two", "three"], title }) => {
   return (
     <>
-      <div>
+      <div className="w-1/4">
         <h2 className="text-main_font_color font-DMsans font-bold text-md mb-4">
           {title}
         </h2>
