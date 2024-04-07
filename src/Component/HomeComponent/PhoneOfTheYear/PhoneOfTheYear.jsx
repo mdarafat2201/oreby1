@@ -1,7 +1,7 @@
 import React from "react";
-import Flex from "../CommonConponent/Flex";
-import PhoneOfTheYearimg from "../../assets/PhoneOfTheYearimg.png";
-import Button from "../CommonConponent/Button";
+import Flex from "../../CommonConponent/Flex";
+import PhoneOfTheYearimg from "../../../assets/PhoneOfTheYearimg.png";
+import Button from "../../CommonConponent/Button";
 const PhoneOfTheYear = () => {
   return (
     <div className="container pb-10">

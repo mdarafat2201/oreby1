@@ -1,6 +1,6 @@
 import React from "react";
-import Flex from "../CommonConponent/Flex";
-import ShippingItem from "../CommonConponent/ShippingItem";
+import Flex from "../../CommonConponent/Flex";
+import ShippingItem from "../../CommonConponent/ShippingItem";
 import { FaTruck } from "react-icons/fa6";
 import { IoReload } from "react-icons/io5";
 import { PiNumberTwoBold } from "react-icons/pi";

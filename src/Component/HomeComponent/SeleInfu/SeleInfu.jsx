@@ -1,9 +1,9 @@
 import React from "react";
-import Flex from "../CommonConponent/Flex";
-import SeleLeftimg from "../../assets/seleLeft img.png";
-import electronicImg from "../../assets/electronicImg.png";
-import FurnitureImg from "../../assets/FurnitureImg.png";
-import Overlay from "../CommonConponent/Overlay";
+import Flex from "../../CommonConponent/Flex";
+import SeleLeftimg from "../../../assets/seleLeft img.png";
+import electronicImg from "../../../assets/electronicImg.png";
+import FurnitureImg from "../../../assets/FurnitureImg.png";
+import Overlay from "../../CommonConponent/Overlay";
 const SeleInfo = () => {
   return (
     <>

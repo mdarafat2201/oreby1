@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import Card from "../CommonConponent/Card";
-import Button from "../CommonConponent/Button";
+import Card from "../../CommonConponent/Card";
+import Button from "../../CommonConponent/Button";
 
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 

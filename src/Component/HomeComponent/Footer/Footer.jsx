@@ -1,6 +1,6 @@
 import React from "react";
-import FooterTop from "../CommonConponent/commonFooter/FooterTop";
-import FooterBottom from "../CommonConponent/commonFooter/FooterBottom";
+import FooterTop from "../../CommonConponent/commonFooter/FooterTop";
+import FooterBottom from "../../CommonConponent/commonFooter/FooterBottom";
 
 const Footer = () => {
   return (

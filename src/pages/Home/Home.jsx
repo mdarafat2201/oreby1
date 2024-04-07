@@ -1,9 +1,9 @@
 import React from "react";
-import Banner from "../../Component/Banner/Banner";
-import Shipping from "../../Component/Shipping/Shipping";
-import SeleInfu from "../../Component/SeleInfu/SeleInfu";
-import Arrival from "../../Component/NewArrival/Arrival";
-import PhoneOfTheYear from "../../Component/PhoneOfTheYear/PhoneOfTheYear";
+import Banner from "../../Component/HomeComponent/Banner/Banner";
+import Shipping from "../../Component/HomeComponent/Shipping/Shipping";
+import SeleInfu from "../../Component/HomeComponent/SeleInfu/SeleInfu";
+import Arrival from "../../Component/HomeComponent/NewArrival/Arrival";
+import PhoneOfTheYear from "../../Component/HomeComponent/PhoneOfTheYear/PhoneOfTheYear";
 import {
   ArrivalData,
   BesellingData,

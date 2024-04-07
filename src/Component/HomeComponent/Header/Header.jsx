@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Logo from "../../assets/Logo.png";
-import Flex from "../CommonConponent/Flex";
+import Logo from "../../../assets/Logo.png";
+import Flex from "../../CommonConponent/Flex";
 import { RxCross2 } from "react-icons/rx";
 import { FaBars } from "react-icons/fa";
 const Header = () => {

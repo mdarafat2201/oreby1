@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import Flex from "../CommonConponent/Flex";
-import Button from "../CommonConponent/Button";
+import Flex from "../../CommonConponent/Flex";
+import Button from "../../CommonConponent/Button";
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
-import Serach from "../CommonConponent/Serach";
+import Serach from "../../CommonConponent/Serach";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import CartItem from "../../assets/product4.png";
+import CartItem from "../../../assets/product4.png";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 const MenuBar = () => {

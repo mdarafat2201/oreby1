@@ -1,7 +1,7 @@
 import React from "react";
 import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
-import BannerImgs from "../../assets/banner.png";
+import BannerImgs from "../../../assets/banner.png";
 const Baner = () => {
   var settings = {
     dots: true,
