@@ -83,7 +83,7 @@ const settings = {
       },
     },
     {
-      breakpoint: 600,
+      breakpoint: 800,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
@@ -117,7 +117,6 @@ const Arrival = ({ headingTitle, ArrivalData }) => {
                 img={item.productImg}
                 badge={
                   item.badge ? (
-                    //<Button className={"py-[7px] px-8"}>{}</Button>
                     <Button
                       className={"py-[7px] px-8 bg-black text-white"}
                       title={item.productStatus}

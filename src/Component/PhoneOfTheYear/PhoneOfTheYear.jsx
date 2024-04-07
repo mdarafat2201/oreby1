@@ -14,7 +14,7 @@ const PhoneOfTheYear = () => {
           </div>
           <div className="w-full ">
             <div className="flex flex-col items-start h-full gap-y-6">
-              <h2 className="font-DMsans font-semibold text-[40px] text-main_font_color">
+              <h2 className="font-DMsans font-semibold text-[25px] sm:text-[40px] text-main_font_color">
                 Phone of the year
               </h2>
               <p className="max-w-[511px] font-normal font-DMsans text-[16px] text-main_font_color">
