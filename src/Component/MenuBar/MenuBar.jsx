@@ -49,54 +49,52 @@ const MenuBar = () => {
       <div className="bg-secondary_bg_color py-5 px-5" ref={MenuRef}>
         <div className="container">
           <Flex className={"gap-x-3 justify-between items-center"}>
-            <Flex className={"gap-x-3"}>
-              <div className="relative">
-                <div onClick={HandleCatagory}>
-                  <HiMiniBars3BottomLeft
-                    className={`text-2xl cursor-pointer ${
-                      ShowCatagorise === true ? "text-green-400" : null
-                    }`}
-                  />
-                </div>
-
+            <Flex className="relative ">
+              <div onClick={HandleCatagory}>
+                <HiMiniBars3BottomLeft
+                  className={`text-2xl cursor-pointer ${
+                    ShowCatagorise === true ? "text-green-400" : null
+                  }`}
+                />
+              </div>
+              <div className="ml-3">
                 <p className="menuItem  cursor-pointer text-main_font_color hidden sm:block">
                   Shop by Category
                 </p>
-                {ShowCatagorise && (
-                  <div>
-                    <ul
-                      className={`bg-main_font_color text-white sm:static  py-4 absolute z-10 divide-y divide-[#ffffff3f] ${
-                        ShowCatagorise === true
-                          ? "w-[100vw] left-[-20px] top-[250%]"
-                          : null
-                      }`}
-                    >
-                      <li className="p-4">
-                        <Link to={"/"}>Accesories</Link>
-                      </li>
-                      <li className="p-4">
-                        <Link to={"/"}>Furniture</Link>
-                      </li>
-                      <li className="p-4">
-                        <Link to={"/"}>Electronics</Link>
-                      </li>
-                      <li className="p-4">
-                        <Link to={"/"}>Clothes</Link>
-                      </li>
-                      <li className="p-4">
-                        <Link to={"/"}>Bags</Link>
-                      </li>
-                      <li className="p-4">
-                        <Link to={"/"}>Home appliances</Link>
-                      </li>
-                    </ul>
-                  </div>
-                )}
               </div>
+
+              {ShowCatagorise && (
+                <div>
+                  <ul
+                    className={`bg-main_font_color text-white   py-4 absolute z-10 divide-y divide-[#ffffff3f] w-[100vw] sm:w-[30vw]  left-[-20px] sm:left-[4px]  top-[250%]
+                     
+                    `}
+                  >
+                    <li className="p-4">
+                      <Link to={"/"}>Accesories</Link>
+                    </li>
+                    <li className="p-4">
+                      <Link to={"/"}>Furniture</Link>
+                    </li>
+                    <li className="p-4">
+                      <Link to={"/"}>Electronics</Link>
+                    </li>
+                    <li className="p-4">
+                      <Link to={"/"}>Clothes</Link>
+                    </li>
+                    <li className="p-4">
+                      <Link to={"/"}>Bags</Link>
+                    </li>
+                    <li className="p-4">
+                      <Link to={"/"}>Home appliances</Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </Flex>
 
             <Serach placeholder={"Search Products"} />
-            <Flex className={" gap-x-2 sm:gap-x-5"}>
+            <Flex className={" gap-x-2 sm:gap-x-2"}>
               <div className="relative">
                 <div onClick={HandleAccount}>
                   <Flex
@@ -120,7 +118,7 @@ const MenuBar = () => {
                   <div>
                     <ul
                       className={
-                        "w-[100vw] sm:w-[200px] right-[-44px] top-14  z-10 bg-main_font_color absolute sm:static text-center text-main_bg_color py-2 divide-y divide-[#ffffff3f]"
+                        "w-[100vw] sm:w-[200px] right-[-44px] sm:right-[1px] top-14  z-10 bg-main_font_color absolute  text-center text-main_bg_color py-2 divide-y divide-[#ffffff3f]"
                       }
                     >
                       <li className="p-4">
@@ -140,7 +138,7 @@ const MenuBar = () => {
 
                 {Cart && (
                   <div
-                    className={`text-main_bg_color right-[-35px] absolute top-14 z-10  w-[100vw] sm:w-fit 
+                    className={`text-main_bg_color right-[-35px] sm:right-0 absolute top-14 z-10  w-[100vw] sm:w-[55vw] lg:w-[30vw]
                     
                   `}
                   >
