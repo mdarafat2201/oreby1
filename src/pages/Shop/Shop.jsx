@@ -14,8 +14,8 @@ const Shop = () => {
           <BreadCrumb />
           <div className="py-16">
             <Flex>
-              <ShopLeft className="w-[25%] bg-green-500" />
-              <ShopRight className="w-[75%] bg-purple-500" />
+              <ShopLeft className="w-[25%] h-[100vh] " />
+              <ShopRight className="w-[75%] h-[100vh] bg-purple-500" />
             </Flex>
           </div>
         </div>

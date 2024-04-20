@@ -28,24 +28,6 @@ const Shipping = () => {
                 <p>{item.title}</p>
               </ShippingItem>
             ))}
-
-            {/* <ShippingItem
-              className={"flex gap-x-3 items-center cursor-pointer"}
-              icon={"2"}
-              title={"Two years warranty"}
-            />
-            <ShippingItem
-              className={"flex gap-x-3 items-center cursor-pointer"}
-              icon={<FaTruck />}
-              title={"Free shipping"}
-            />
-            <ShippingItem
-              className={"flex gap-x-3 items-center cursor-pointer"}
-              icon={<IoReload />}
-              title={"Return policy in 30 days"}
-            /> */}
-            {/* <span>{icon ? icon : <FaTruck />}</span>
-      <h2>{title ? title : "Two years warranty"}</h2> */}
           </Flex>
         </div>
       </div>

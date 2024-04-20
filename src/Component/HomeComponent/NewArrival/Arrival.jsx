@@ -102,7 +102,7 @@ const settings = {
 
 const Arrival = ({ headingTitle, ArrivalData }) => {
   const [arrivalData] = useState(ArrivalData);
-
+  console.log(ArrivalData);
   return (
     <>
       <div className=" pb-10 sm:pb-32 p-x-10">

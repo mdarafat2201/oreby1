@@ -16,6 +16,7 @@ const Baner = () => {
         style={{
           position: "absolute",
           top: "50%",
+          left: "0",
           transform: "translateY(-50%)",
           borderRadius: "10px",
           padding: "10px",

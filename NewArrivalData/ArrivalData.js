@@ -129,3 +129,39 @@ export const BestsellerData = [
     productStatus: "75%",
   },
 ];
+
+export const Catagorise = [
+  {
+    id: 1,
+    title: "Category 1",
+    subcategores: [
+      { id: 1, title: "subcategories 1" },
+      { id: 1, title: "subcategories 1" },
+      { id: 1, title: "subcategories 1" },
+    ],
+  },
+  {
+    id: 2,
+    title: "Category 2",
+    subcategores: [],
+  },
+  {
+    id: 3,
+    title: "Category 3",
+    subcategores: [
+      { id: 1, title: "subcategories 3" },
+      { id: 1, title: "subcategories 3" },
+      { id: 1, title: "subcategories 3" },
+    ],
+  },
+  {
+    id: 4,
+    title: "Category 2",
+    subcategores: [],
+  },
+  {
+    id: 5,
+    title: "Category 2",
+    subcategores: [],
+  },
+];
