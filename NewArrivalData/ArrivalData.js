@@ -156,12 +156,12 @@ export const Catagorise = [
   },
   {
     id: 4,
-    title: "Category 2",
+    title: "Category 4",
     subcategores: [],
   },
   {
     id: 5,
-    title: "Category 2",
+    title: "Category 5",
     subcategores: [],
   },
 ];
