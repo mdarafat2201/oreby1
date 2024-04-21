@@ -2,10 +2,24 @@ import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import Flex from "../Flex";
 const ShopCatagories = ({ CatagorseData, ShopLeftTitle }) => {
-  const [showCatagories, setshowCatagories] = useState(false);
+  const [showCatagories, setshowCatagories] = useState(
+    CatagorseData.map(() => false)
+  );
+  // const HanldeCategoryToggle = (id) => {
+  //   //setshowCatagories(!showCatagories);
+  //   setshowCatagories((previousState) => {
+  //     return previousState.map((item) => {
+  //       return id === index ? !value : fales;
+  //     });
+  //   });
+  // };
+
   const HanldeCategoryToggle = (id) => {
-    setshowCatagories(!showCatagories);
-    console.log(id);
+    setshowCatagories((previousState) => {
+      return previousState.map((value, index) =>
+        id === index ? !value : false
+      );
+    });
   };
 
   return (
@@ -19,9 +33,10 @@ const ShopCatagories = ({ CatagorseData, ShopLeftTitle }) => {
         <div className="divide-y-2 divide-[#f0f0f0] divide-solid ">
           {CatagorseData?.map((item, index) =>
             item.subcategores.length > 0 ? (
-              <div key={item.id}>
+              <div>
                 <div
-                  className="py-5 px-2 cursor-pointer"
+                  className="py-5 px-2 cursor-pointer "
+                  key={item.id}
                   onClick={() => HanldeCategoryToggle(index)}
                 >
                   <Flex className={"items-center justify-between"}>
@@ -32,7 +47,7 @@ const ShopCatagories = ({ CatagorseData, ShopLeftTitle }) => {
                   </Flex>
                 </div>
                 <div className={`${showCatagories && "mb-4"}`}>
-                  {showCatagories &&
+                  {showCatagories[index] &&
                     item.subcategores.map((subitem) => (
                       <div
                         className="px-3 py-2 cursor-pointer"

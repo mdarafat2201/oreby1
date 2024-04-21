@@ -133,35 +133,49 @@ export const BestsellerData = [
 export const Catagorise = [
   {
     id: 1,
-    title: "Category 1",
+    title: "Mobile",
     subcategores: [
-      { id: 1, title: "subcategories 1" },
-      { id: 1, title: "subcategories 1" },
-      { id: 1, title: "subcategories 1" },
+      { id: 1, title: "Oppo A5s" },
+      { id: 2, title: "vivo" },
+      { id: 3, title: "Xiamoi" },
+      { id: 4, title: "Samsung" },
     ],
   },
   {
     id: 2,
-    title: "Category 2",
-    subcategores: [],
+    title: "Apple",
+    subcategores: [
+      { id: 1, title: "Iphone 13" },
+      { id: 2, title: "Iphone 14" },
+      { id: 3, title: "Iphone 15" },
+      { id: 4, title: "Iphone 8" },
+      { id: 5, title: "Iphone 11 pro max" },
+      { id: 6, title: "Iphone 10" },
+    ],
   },
   {
     id: 3,
-    title: "Category 3",
+    title: "Desktop",
     subcategores: [
-      { id: 1, title: "subcategories 3" },
-      { id: 1, title: "subcategories 3" },
-      { id: 1, title: "subcategories 3" },
+      { id: 1, title: "Asus" },
+      { id: 2, title: "Dell" },
+      { id: 3, title: "Walton" },
+      { id: 4, title: "Gigabyte" },
     ],
   },
   {
     id: 4,
-    title: "Category 4",
+    title: "Accesoris",
     subcategores: [],
   },
   {
     id: 5,
-    title: "Category 5",
-    subcategores: [],
+    title: "Cloths",
+    subcategores: [
+      { id: 1, title: "Mens" },
+      { id: 2, title: "Womens" },
+      { id: 3, title: "Beby" },
+      { id: 4, title: "costom" },
+    ],
   },
 ];
