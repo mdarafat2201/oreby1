@@ -179,3 +179,11 @@ export const Catagorise = [
     ],
   },
 ];
+
+export const ShopColor = [
+  { id: 1, Colorcode: "#000000", title: "Black" },
+  { id: 2, Colorcode: "#FF8686", title: "Pink" },
+  { id: 3, Colorcode: "#7ED321", title: "Green" },
+  { id: 4, Colorcode: "#B6B6B6", title: "Offwhite" },
+  { id: 5, Colorcode: "#15CBA5", title: "blue" },
+];

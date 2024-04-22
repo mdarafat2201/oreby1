@@ -5,14 +5,6 @@ const ShopCatagories = ({ CatagorseData, ShopLeftTitle }) => {
   const [showCatagories, setshowCatagories] = useState(
     CatagorseData.map(() => false)
   );
-  // const HanldeCategoryToggle = (id) => {
-  //   //setshowCatagories(!showCatagories);
-  //   setshowCatagories((previousState) => {
-  //     return previousState.map((item) => {
-  //       return id === index ? !value : fales;
-  //     });
-  //   });
-  // };
 
   const HanldeCategoryToggle = (id) => {
     setshowCatagories((previousState) => {
