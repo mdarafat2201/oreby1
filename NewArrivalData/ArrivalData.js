@@ -195,3 +195,11 @@ export const ShopBrand = [
   { id: 4, title: "BMW" },
   { id: 5, title: "Honda" },
 ];
+
+export const ShopPrice = [
+  { id: 1, title: "$0.00 - $9.99" },
+  { id: 2, title: "$10.00 - $19.99" },
+  { id: 3, title: "$20.00 - $29.99" },
+  { id: 4, title: "$30.00 - $39.99" },
+  { id: 5, title: "$40.00 - $69.99" },
+];

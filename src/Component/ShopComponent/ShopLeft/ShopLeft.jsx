@@ -2,10 +2,12 @@ import React from "react";
 import ShopCatagories from "../../CommonConponent/ShopleftItem/ShopCatagories";
 import ShopByColor from "../../CommonConponent/ShopleftItem/ShopByColor";
 import ShopbyBrand from "../../CommonConponent/ShopleftItem/ShopbyBrand";
+import ShopbyPrice from "../../CommonConponent/ShopleftItem/ShopbyPrice";
 import {
   Catagorise,
   ShopColor,
   ShopBrand,
+  ShopPrice,
 } from "../../../../NewArrivalData/ArrivalData";
 const ShopLeft = ({ className }) => {
   return (
@@ -21,6 +23,10 @@ const ShopLeft = ({ className }) => {
       <ShopbyBrand
         ShopByBrandData={ShopBrand ? ShopBrand : []}
         ShopLeftBrandTitle={"Shop by Brand"}
+      />
+      <ShopbyPrice
+        ShopByPriceData={ShopPrice ? ShopPrice : []}
+        ShopLeftPriceTitle={"Shop by Price"}
       />
     </div>
   );
