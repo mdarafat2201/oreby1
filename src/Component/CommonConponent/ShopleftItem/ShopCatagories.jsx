@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import Flex from "../Flex";
-const ShopCatagories = ({ CatagorseData, ShopLeftTitle }) => {
+const ShopCatagories = ({ CatagorseData, ShopLeftCategoryTitle }) => {
   const [showCatagories, setshowCatagories] = useState(
     CatagorseData.map(() => false)
   );
@@ -18,7 +18,7 @@ const ShopCatagories = ({ CatagorseData, ShopLeftTitle }) => {
     <>
       <div>
         <h1 className="font-DMsans font-bold text-xl mb-9">
-          {ShopLeftTitle ? ShopLeftTitle : "title is missing"}
+          {ShopLeftCategoryTitle ? ShopLeftCategoryTitle : "title is missing"}
         </h1>
       </div>
       <div>

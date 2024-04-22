@@ -187,3 +187,11 @@ export const ShopColor = [
   { id: 4, Colorcode: "#B6B6B6", title: "Offwhite" },
   { id: 5, Colorcode: "#15CBA5", title: "blue" },
 ];
+
+export const ShopBrand = [
+  { id: 1, title: "Rolls Royce" },
+  { id: 2, title: "Lamborghini" },
+  { id: 3, title: "Ferrari" },
+  { id: 4, title: "BMW" },
+  { id: 5, title: "Honda" },
+];

@@ -1,17 +1,26 @@
 import React from "react";
 import ShopCatagories from "../../CommonConponent/ShopleftItem/ShopCatagories";
 import ShopByColor from "../../CommonConponent/ShopleftItem/ShopByColor";
-import { Catagorise, ShopColor } from "../../../../NewArrivalData/ArrivalData";
+import ShopbyBrand from "../../CommonConponent/ShopleftItem/ShopbyBrand";
+import {
+  Catagorise,
+  ShopColor,
+  ShopBrand,
+} from "../../../../NewArrivalData/ArrivalData";
 const ShopLeft = ({ className }) => {
   return (
     <div className={className}>
       <ShopCatagories
         CatagorseData={Catagorise ? Catagorise : []}
-        ShopLeftTitle={"Shop by Category"}
+        ShopLeftCategoryTitle={"Shop by Category"}
       />
       <ShopByColor
-        ShopLeftTitle={"Shop by Color"}
+        ShopLeftColorTitle={"Shop by Color"}
         ShopByColorData={ShopColor ? ShopColor : []}
+      />
+      <ShopbyBrand
+        ShopByBrandData={ShopBrand ? ShopBrand : []}
+        ShopLeftBrandTitle={"Shop by Brand"}
       />
     </div>
   );
