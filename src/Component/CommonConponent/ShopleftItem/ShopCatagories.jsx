@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 import Flex from "../Flex";
-const ShopCatagories = ({ CatagorseData, ShopLeftCategoryTitle }) => {
-  const [showCatagories, setshowCatagories] = useState(false);
+const ShopCatagories = ({
+  CatagorseData,
+  dropdownis,
+  dropdownisExpandis,
+  ShopLeftCategoryTitle,
+}) => {
+  const [showCatagories, setshowCatagories] = useState(dropdownisExpandis);
 
   // HanldeBrand function implement
   const HanldeCatagories = () => {
@@ -23,18 +28,20 @@ const ShopCatagories = ({ CatagorseData, ShopLeftCategoryTitle }) => {
 
   return (
     <>
-      <div className=" mb-5" onClick={HanldeCatagories}>
+      <div className=" mb-5 cursor-pointer" onClick={HanldeCatagories}>
         <Flex className={"items-center justify-between"}>
           <h1 className="font-DMsans font-bold text-xl">
             {ShopLeftCategoryTitle ? ShopLeftCategoryTitle : "title is missing"}
           </h1>
-          <div className="mr-2">
-            {showCatagories === true ? (
-              <BiSolidUpArrow />
-            ) : (
-              <BiSolidDownArrow />
-            )}
-          </div>
+          {dropdownis && (
+            <div className="mr-2">
+              {showCatagories === true ? (
+                <BiSolidUpArrow />
+              ) : (
+                <BiSolidDownArrow />
+              )}
+            </div>
+          )}
         </Flex>
       </div>
       {showCatagories && (

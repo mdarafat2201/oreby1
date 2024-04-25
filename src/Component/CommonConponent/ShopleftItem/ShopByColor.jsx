@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 
 import Flex from "../Flex";
-const ShopByColor = ({ ShopLeftColorTitle, ShopByColorData }) => {
-  const [showColor, setshowColor] = useState(false);
+const ShopByColor = ({
+  ShopLeftColorTitle,
+  ShopByColorData,
+  dropdownisExpandis,
+  dropdownis,
+}) => {
+  const [showColor, setshowColor] = useState(dropdownisExpandis);
   // HanldeColor function implement
 
   const HanldeColor = () => {
@@ -13,16 +18,16 @@ const ShopByColor = ({ ShopLeftColorTitle, ShopByColorData }) => {
   return (
     <>
       <div className=" mt-10  ">
-        <div className="mb-5" onClick={HanldeColor}>
+        <div className="mb-5 cursor-pointer" onClick={HanldeColor}>
           <Flex className={"items-center justify-between"}>
             <h1 className="font-DMsans font-bold  text-xl ">
               {ShopLeftColorTitle ? ShopLeftColorTitle : "Title is missing"}
             </h1>
-            <div className="mr-2">
-              {showColor === true ? <BiSolidUpArrow /> : <BiSolidDownArrow />}
-            </div>
-
-            {/* <BiSolidUpArrow className="mr-2" /> */}
+            {dropdownis && (
+              <div className="mr-2">
+                {showColor === true ? <BiSolidUpArrow /> : <BiSolidDownArrow />}
+              </div>
+            )}
           </Flex>
         </div>
         {showColor && (

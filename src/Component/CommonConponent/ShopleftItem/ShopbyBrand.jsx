@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 import Flex from "../Flex";
-const ShopbyBrand = ({ ShopLeftBrandTitle, ShopByBrandData }) => {
-  const [showBrand, setshowBrand] = useState(false);
+const ShopbyBrand = ({
+  ShopLeftBrandTitle,
+  ShopByBrandData,
+  dropdownisExpandis,
+  dropdownis,
+}) => {
+  const [showBrand, setshowBrand] = useState(dropdownisExpandis);
   // HanldeBrand function implement
   const HanldeBrand = () => {
     setshowBrand(!showBrand);
@@ -10,14 +15,16 @@ const ShopbyBrand = ({ ShopLeftBrandTitle, ShopByBrandData }) => {
   return (
     <>
       <div className="mt-10">
-        <div className="mb-5" onClick={HanldeBrand}>
+        <div className="mb-5 cursor-pointer" onClick={HanldeBrand}>
           <Flex className={"items-center justify-between"}>
             <h1 className="font-DMsans font-bold  text-xl ">
               {ShopLeftBrandTitle ? ShopLeftBrandTitle : "Shop by Brand"}
             </h1>
-            <div className="mr-2">
-              {showBrand === true ? <BiSolidUpArrow /> : <BiSolidDownArrow />}
-            </div>
+            {dropdownis && (
+              <div className="mr-2">
+                {showBrand === true ? <BiSolidUpArrow /> : <BiSolidDownArrow />}
+              </div>
+            )}
           </Flex>
         </div>
         {showBrand && (

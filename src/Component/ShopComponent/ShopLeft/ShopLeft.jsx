@@ -15,18 +15,26 @@ const ShopLeft = ({ className }) => {
       <ShopCatagories
         CatagorseData={Catagorise ? Catagorise : []}
         ShopLeftCategoryTitle={"Shop by Category"}
+        dropdownis={false}
+        dropdownisExpandis={true}
       />
       <ShopByColor
         ShopLeftColorTitle={"Shop by Color"}
         ShopByColorData={ShopColor ? ShopColor : []}
+        dropdownis={true}
+        dropdownisExpandis={false}
       />
       <ShopbyBrand
         ShopByBrandData={ShopBrand ? ShopBrand : []}
         ShopLeftBrandTitle={"Shop by Brand"}
+        dropdownis={true}
+        dropdownisExpandis={false}
       />
       <ShopbyPrice
         ShopByPriceData={ShopPrice ? ShopPrice : []}
         ShopLeftPriceTitle={"Shop by Price"}
+        dropdownis={false}
+        dropdownisExpandis={true}
       />
     </div>
   );
