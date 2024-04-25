@@ -1,15 +1,14 @@
-import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
+import ProductRightTop from "../../CommonConponent/ShopleftItem/ProductRightTop";
 
 const ShopRight = ({ className }) => {
-  useEffect(() => {
-    const DataFetcher = async () => {
-      const data = await axios.get("https://dummyjson.com/products");
-      console.log(data.data.products);
-    };
-    DataFetcher();
-  }, []);
-  return <div className={className}>ShopRight</div>;
+  return (
+    <>
+      <div className={className}>
+        <ProductRightTop />
+      </div>
+    </>
+  );
 };
 
 export default ShopRight;
