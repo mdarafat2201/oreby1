@@ -1,16 +1,20 @@
 import React from "react";
-import productImg from "../../assets/electronicImg.png";
+import productImg from "../../assets/product10.png";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { TbReload } from "react-icons/tb";
 
 const Card = ({ colorVariant, badge, img, productTitle, price }) => {
   return (
     <>
-      <div className="cursor-pointer px-4  w-full">
+      <div className="cursor-pointer px-4   w-full">
         <div className="group relative overflow-hidden">
           <div className="absolute top-5 left-5 text-black">{badge}</div>
 
-          <img src={img ? img : productImg} alt={img} />
+          <img
+            src={img ? img : productImg}
+            alt={img}
+            className="w-full h-[250px] object-cover"
+          />
 
           {/* =================Overlay================= */}
 
@@ -39,18 +43,17 @@ const Card = ({ colorVariant, badge, img, productTitle, price }) => {
         </div>
 
         <div className="flex justify-between items-center pt-6">
-          <h3 className="text-primaryFontColor font-DMsans font-semibold text-xl">
+          <h3 className=" font-DMsans  font-normal text-sm">
             {productTitle ? productTitle : "Basic Crew Neck Tee"}
           </h3>
           <p className="text-base font-DMsans font-normal text-thirdFontColor">
-            {price ? price : "$44.00"}
+            {price ? `$${price}` : "$44.00"}
           </p>
         </div>
-        {colorVariant && (
-          <span className="text-thirdFontColor font-DMsans font-normal text-base pt-3">
-            Black
-          </span>
-        )}
+
+        <span className="text-thirdFontColor font-DMsans font-normal text-base pt-3">
+          {colorVariant ? colorVariant : "Black"}
+        </span>
       </div>
     </>
   );
