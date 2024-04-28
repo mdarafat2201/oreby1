@@ -3,6 +3,7 @@ import Card from "../Card.jsx";
 import Button from "../Button";
 import Flex from "../Flex.jsx";
 import axios from "axios";
+import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 const ShopRightBottom = () => {
   const [allProducts, setallProducts] = useState([]);
   const [page, setpage] = useState(1);
@@ -47,11 +48,19 @@ const ShopRightBottom = () => {
         <div className="mt-10">
           <Flex className={"items-center justify-between"}>
             <Flex className="items-center gap-x-2">
+              <p
+                className={`w-9 h-9 text-[#000000] bg-green-200 flex justify-center items-center cursor-pointer 
+                 `}
+              >
+                <FaAnglesLeft />
+              </p>
               {[...new Array(Math.floor(allProducts.length / 9) + 1)].map(
                 (item, index) => (
                   <div key={index}>
                     <p
-                      className="w-9 h-9 bg-[#000000] text-main_bg_color flex justify-center items-center cursor-pointer"
+                      className={`w-9 h-9 bg-[#000000] text-main_bg_color flex justify-center items-center cursor-pointer ${
+                        index + 1 === page && "bg-green-400 text-red-400"
+                      }`}
                       onClick={() => HandlePagination(index + 1)}
                     >
                       {index + 1}
@@ -59,6 +68,12 @@ const ShopRightBottom = () => {
                   </div>
                 )
               )}
+              <p
+                className={`w-9 h-9 text-[#000000] bg-green-200 flex justify-center items-center cursor-pointer 
+                 `}
+              >
+                <FaAnglesRight />
+              </p>
             </Flex>
             <div>
               <p>{`Products from ${
