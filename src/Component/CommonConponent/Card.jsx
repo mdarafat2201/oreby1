@@ -13,7 +13,7 @@ const Card = ({ colorVariant, badge, img, productTitle, price }) => {
           <img
             src={img ? img : productImg}
             alt={img}
-            className="w-full h-[250px] object-cover"
+            className="w-full h-[290px] object-cover"
           />
 
           {/* =================Overlay================= */}
@@ -43,7 +43,7 @@ const Card = ({ colorVariant, badge, img, productTitle, price }) => {
         </div>
 
         <div className="flex justify-between items-center pt-6">
-          <h3 className=" font-DMsans  font-normal text-sm">
+          <h3 className=" font-DMsans  font-bold text-xl">
             {productTitle ? productTitle : "Basic Crew Neck Tee"}
           </h3>
           <p className="text-base font-DMsans font-normal text-thirdFontColor">
