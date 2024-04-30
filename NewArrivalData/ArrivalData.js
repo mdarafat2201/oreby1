@@ -210,10 +210,3 @@ export const SortBy = [
   { id: 4, SortItem: "Womens" },
   { id: 5, SortItem: "fone" },
 ];
-export const SortByNomber = [
-  { id: 1, SortNomber: "20" },
-  { id: 2, SortNomber: "30" },
-  { id: 3, SortNomber: "40" },
-  { id: 4, SortNomber: "60" },
-  { id: 5, SortNomber: "70" },
-];
