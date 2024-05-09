@@ -5,7 +5,10 @@ import Flex from "../Flex.jsx";
 import axios from "axios";
 import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 import { ShopRightPagecontext } from "../../ShopComponent/ShopRight/ShopRight";
+import { SetProduts } from "../../../Redux/AllSlice/ProductSlice/ProductSlice.js";
+import { useSelector, useDispatch } from "react-redux";
 const ShopRightBottom = () => {
+  const dispatch = useDispatch();
   const [allProducts, setallProducts] = useState([]);
   const [page, setpage] = useState(1);
   const value = useContext(ShopRightPagecontext);
@@ -13,6 +16,9 @@ const ShopRightBottom = () => {
     const ProudtDataFetcher = async () => {
       const products = await axios.get("https://dummyjson.com/products");
       setallProducts(products.data.products);
+
+      // set data on redux
+      dispatch(SetProduts(products.data.products));
     };
     ProudtDataFetcher();
   }, []);
