@@ -32,10 +32,11 @@ export const FetcherProduct = () => {
       const response = await fetch("https://dummyjson.com/products");
       const data = await response.json();
       dispatch(SetProduts(data.products));
-      dispatch(setStatus(ApiStatus.IDLE));
     } catch (error) {
       console.log(error);
       dispatch(setStatus(ApiStatus.ERROR));
+    } finally {
+      dispatch(setStatus(ApiStatus.IDLE));
     }
   };
 };

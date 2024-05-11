@@ -3,15 +3,15 @@ import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { SortBy } from "../../../../NewArrivalData/ArrivalData";
 import Flex from "../Flex";
 // import { FaBars } from "react-icons/fa6";
-const ProductRightTop = ({ onpageItem }) => {
+const ProductRightTop = ({ onpageItem, onchageLayout }) => {
   const [sortProduct, setsortProduct] = useState(SortBy);
 
   return (
     <>
       <div>
         <Flex className={"items-center justify-between"}>
-          <div>
-            <BsFillGrid3X3GapFill />
+          <div onClick={onchageLayout}>
+            <BsFillGrid3X3GapFill className="text-2xl cursor-pointer" />
             {/* <FaBars /> */}
           </div>
           <div>
