@@ -15,14 +15,21 @@ const ShopRight = ({ className }) => {
   const handlePagination = () => {
     setGridLayout(!GridLayout);
   };
+
+  const ShopRightBottomItem = {
+    sortProduct,
+    GridLayout,
+  };
+
   return (
     <>
       <div className={className}>
         <ProductRightTop
           onpageItem={HandlepageOtion}
           onchageLayout={handlePagination}
+          changeIcon={GridLayout}
         />
-        <ShopRightPagecontext.Provider value={sortProduct}>
+        <ShopRightPagecontext.Provider value={ShopRightBottomItem}>
           <ShopRightBottom />
         </ShopRightPagecontext.Provider>
       </div>

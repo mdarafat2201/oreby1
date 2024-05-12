@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { FaBarsProgress } from "react-icons/fa6";
 import { SortBy } from "../../../../NewArrivalData/ArrivalData";
 import Flex from "../Flex";
 // import { FaBars } from "react-icons/fa6";
-const ProductRightTop = ({ onpageItem, onchageLayout }) => {
+const ProductRightTop = ({ onpageItem, onchageLayout, changeIcon }) => {
   const [sortProduct, setsortProduct] = useState(SortBy);
 
   return (
@@ -11,8 +12,14 @@ const ProductRightTop = ({ onpageItem, onchageLayout }) => {
       <div>
         <Flex className={"items-center justify-between"}>
           <div onClick={onchageLayout}>
-            <BsFillGrid3X3GapFill className="text-2xl cursor-pointer" />
-            {/* <FaBars /> */}
+            {changeIcon ? (
+              <FaBarsProgress className="text-2xl cursor-pointer" />
+            ) : (
+              <BsFillGrid3X3GapFill className="text-2xl cursor-pointer" />
+            )}
+
+            {/* <BsFillGrid3X3GapFill className="text-2xl cursor-pointer" />
+            <FaBars /> */}
           </div>
           <div>
             <Flex className={"items-center gap-x-8"}>

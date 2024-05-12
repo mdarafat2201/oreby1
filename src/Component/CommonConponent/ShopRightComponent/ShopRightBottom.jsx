@@ -11,7 +11,7 @@ const ShopRightBottom = () => {
   const [allProducts, setallProducts] = useState([]);
   const [page, setpage] = useState(1);
   const value = useContext(ShopRightPagecontext);
-
+  const { GridLayout, sortProduct } = value;
   useEffect(() => {
     dispatch(FetcherProduct());
   }, []);
@@ -40,7 +40,7 @@ const ShopRightBottom = () => {
   const HandlePagination = (pageNumber) => {
     if (
       pageNumber > 0 &&
-      pageNumber <= Math.floor(allProducts.length / value) + 1
+      pageNumber <= Math.floor(allProducts.length / sortProduct) + 1
     ) {
       setpage(pageNumber);
     }
@@ -76,9 +76,12 @@ const ShopRightBottom = () => {
             <div>
               <div className="flex items-center justify-between flex-wrap gap-y-8">
                 {allProducts
-                  ?.slice(page * value - value, page * value)
+                  ?.slice(page * sortProduct - sortProduct, page * sortProduct)
                   .map((productItem) => (
-                    <div className="w-[33%]" key={productItem.id}>
+                    <div
+                      className={`${GridLayout ? "w-full" : "w-[33%]"}`}
+                      key={productItem.id}
+                    >
                       <Card
                         img={productItem.thumbnail}
                         productTitle={productItem.title}
@@ -113,7 +116,9 @@ const ShopRightBottom = () => {
                     </div>
 
                     {[
-                      ...new Array(Math.floor(allProducts.length / value) + 1),
+                      ...new Array(
+                        Math.floor(allProducts.length / sortProduct) + 1
+                      ),
                     ].map((item, index) => (
                       <div key={index}>
                         <p
@@ -139,12 +144,12 @@ const ShopRightBottom = () => {
                   <div>
                     <p>{`Products from ${
                       page === 1
-                        ? page * value - value + 1
-                        : page * value - value
+                        ? page * sortProduct - sortProduct + 1
+                        : page * sortProduct - sortProduct
                     } to ${
-                      page === Math.floor(allProducts.length / value) + 1
+                      page === Math.floor(allProducts.length / sortProduct) + 1
                         ? allProducts.length
-                        : page * value
+                        : page * sortProduct
                     } of ${allProducts.length}`}</p>
                   </div>
                 </Flex>
