@@ -20,7 +20,7 @@ const ShopByColor = ({
       <div className=" mt-10  ">
         <div className="mb-5 cursor-pointer" onClick={HanldeColor}>
           <Flex className={"items-center justify-between"}>
-            <h1 className="font-DMsans font-bold  text-xl ">
+            <h1 className="font-DMsans text-xl font-bold md:text-[16px]  lg:text-xl ">
               {ShopLeftColorTitle ? ShopLeftColorTitle : "Title is missing"}
             </h1>
             {dropdownis && (
@@ -31,15 +31,15 @@ const ShopByColor = ({
           </Flex>
         </div>
         {showColor && (
-          <div className="divide-y-2 divide-[#f0f0f0] divide-solid ">
+          <div className="divide-y-2 divide-solid divide-[#f0f0f0] ">
             {ShopByColorData?.map((item) => (
               <div className="px-2 py-5">
                 <Flex className={"items-center gap-x-3"}>
                   <div
-                    className="w-3 h-3 rounded-full bg-green-400"
+                    className="h-3 w-3 rounded-full bg-green-400"
                     style={{ backgroundColor: `${item.Colorcode}` }}
                   ></div>
-                  <h2 className="text-base text-secondary_font_color font-normal">
+                  <h2 className="text-base font-normal text-secondary_font_color">
                     {item.title}
                   </h2>
                 </Flex>

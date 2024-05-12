@@ -10,38 +10,35 @@ const ProductRightTop = ({ onpageItem, onchageLayout, changeIcon }) => {
   return (
     <>
       <div>
-        <Flex className={"items-center justify-between"}>
-          <div onClick={onchageLayout}>
+        <Flex className={" items-center justify-between px-2 "}>
+          <div onClick={onchageLayout} className="hidden sm:block">
             {changeIcon ? (
-              <FaBarsProgress className="text-2xl cursor-pointer" />
+              <FaBarsProgress className="cursor-pointer text-2xl" />
             ) : (
-              <BsFillGrid3X3GapFill className="text-2xl cursor-pointer" />
+              <BsFillGrid3X3GapFill className="cursor-pointer text-2xl" />
             )}
-
-            {/* <BsFillGrid3X3GapFill className="text-2xl cursor-pointer" />
-            <FaBars /> */}
           </div>
           <div>
             <Flex className={"items-center gap-x-8"}>
               <Flex className={"items-center"}>
-                <h2 className="text-secondary_font_color font-DMsans mr-4 font-normal text-base">
+                <h2 className="mr-4 hidden font-DMsans text-base font-normal text-secondary_font_color sm:block">
                   Sort by:
                 </h2>
                 <select
                   name="sort"
                   id="sort"
-                  className="min-w-[240px] py-2 cursor-pointer border-2 border-[#F0F0F0] "
+                  className=" min-w-[140px] cursor-pointer border-2 border-[#F0F0F0] py-2 sm:min-w-[240px] md:min-w-[170px] "
                 >
                   <option
                     value={"Featured"}
-                    className="text-secondary_font_color font-DMsans font-normal text-base"
+                    className="font-DMsans text-base font-normal text-secondary_font_color"
                   >
                     Featured
                   </option>
                   {sortProduct?.map((sortItem) => (
                     <option
                       value={sortItem.SortItem}
-                      className="text-secondary_font_color font-DMsans font-normal my-3 text-base"
+                      className="my-3 font-DMsans text-base font-normal text-secondary_font_color"
                     >
                       {sortItem.SortItem}
                     </option>
@@ -49,33 +46,33 @@ const ProductRightTop = ({ onpageItem, onchageLayout, changeIcon }) => {
                 </select>
               </Flex>
               <Flex className={"items-center"}>
-                <h2 className="text-secondary_font_color font-DMsans mr-4 font-normal text-base">
+                <h2 className="mr-4 hidden font-DMsans text-base font-normal text-secondary_font_color sm:block">
                   Show:
                 </h2>
                 <select
                   onChange={onpageItem}
                   name="sort"
                   id="sort"
-                  className="min-w-[140px] py-2 border-2 cursor-pointer border-[#F0F0F0] "
+                  className=" min-w-[140px]  cursor-pointer border-2 border-[#F0F0F0] py-2 "
                 >
-                  <option className="text-secondary_font_color font-DMsans font-normal text-base">
+                  <option className="font-DMsans text-base font-normal text-secondary_font_color">
                     Select Item
                   </option>
                   <option
                     value={"9"}
-                    className="text-secondary_font_color font-DMsans font-normal text-base"
+                    className="font-DMsans text-base font-normal text-secondary_font_color"
                   >
                     9
                   </option>
                   <option
                     value={"18"}
-                    className="text-secondary_font_color font-DMsans font-normal text-base"
+                    className="font-DMsans text-base font-normal text-secondary_font_color"
                   >
                     18
                   </option>
                   <option
                     value={"27"}
-                    className="text-secondary_font_color font-DMsans font-normal text-base"
+                    className="font-DMsans text-base font-normal text-secondary_font_color"
                   >
                     27
                   </option>

@@ -50,36 +50,36 @@ const ShopRightBottom = () => {
     <>
       <div className="mt-8">
         {status.payload == "LOADING" ? (
-          <div className="flex justify-center items-center h-[100vh]">
-            <div class="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
-              <div class="animate-pulse flex space-x-4">
-                <div class="rounded-full bg-slate-700 h-10 w-10"></div>
+          <div className="flex h-[100vh] items-center justify-center">
+            <div class="mx-auto w-full max-w-sm rounded-md border border-blue-300 p-4 shadow">
+              <div class="flex animate-pulse space-x-4">
+                <div class="h-10 w-10 rounded-full bg-slate-700"></div>
                 <div class="flex-1 space-y-6 py-1">
-                  <div class="h-2 bg-slate-700 rounded"></div>
+                  <div class="h-2 rounded bg-slate-700"></div>
                   <div class="space-y-3">
                     <div class="grid grid-cols-3 gap-4">
-                      <div class="h-2 bg-slate-700 rounded col-span-2"></div>
-                      <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+                      <div class="col-span-2 h-2 rounded bg-slate-700"></div>
+                      <div class="col-span-1 h-2 rounded bg-slate-700"></div>
                     </div>
-                    <div class="h-2 bg-slate-700 rounded"></div>
+                    <div class="h-2 rounded bg-slate-700"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         ) : status.payload === "ERROR" ? (
-          <h1 className="flex justify-center items-center h-[100vh] bg-green-600">
+          <h1 className="flex h-[100vh] items-center justify-center bg-green-600">
             ejhbgcrror
           </h1>
         ) : (
           allProducts && (
             <div>
-              <div className="flex items-center justify-between flex-wrap gap-y-8">
+              <Flex className=" flex-wrap items-center justify-between gap-y-8">
                 {allProducts
                   ?.slice(page * sortProduct - sortProduct, page * sortProduct)
                   .map((productItem) => (
                     <div
-                      className={`${GridLayout ? "w-full" : "w-[33%]"}`}
+                      className={`  ${GridLayout ? "w-full" : "w-full sm:w-[48%] lg:w-[33%]"}`}
                       key={productItem.id}
                     >
                       <Card
@@ -91,7 +91,7 @@ const ShopRightBottom = () => {
                         }
                         badge={
                           <Button
-                            className={"py-[7px] px-8 bg-black text-white"}
+                            className={"bg-black px-8 py-[7px] text-white"}
                             title={
                               productItem.discountPercentage
                                 ? `$${productItem.discountPercentage}`
@@ -102,13 +102,13 @@ const ShopRightBottom = () => {
                       />
                     </div>
                   ))}
-              </div>
+              </Flex>
               <div className="mt-10">
-                <Flex className={"items-center justify-between"}>
+                <Flex className={"flex-wrap items-center justify-between"}>
                   <Flex className="items-center gap-x-2">
                     <div onClick={() => HandlePagination(page - 1)}>
                       <p
-                        className={`w-9 h-9 text-[#000000] border rounded hover:text-main_bg_color hover:bg-[#000000] flex justify-center items-center cursor-pointer 
+                        className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded border text-[#000000] hover:bg-[#000000] hover:text-main_bg_color 
                   `}
                       >
                         <FaAnglesLeft />
@@ -117,12 +117,12 @@ const ShopRightBottom = () => {
 
                     {[
                       ...new Array(
-                        Math.floor(allProducts.length / sortProduct) + 1
+                        Math.floor(allProducts.length / sortProduct) + 1,
                       ),
                     ].map((item, index) => (
                       <div key={index}>
                         <p
-                          className={`w-9 h-9  border rounded  flex justify-center items-center cursor-pointer ${
+                          className={`flex h-9  w-9 cursor-pointer  items-center justify-center rounded border ${
                             index + 1 === page &&
                             "bg-[#000000] text-main_bg_color"
                           }`}
@@ -134,14 +134,14 @@ const ShopRightBottom = () => {
                     ))}
                     <div onClick={() => HandlePagination(page + 1)}>
                       <p
-                        className={`w-9 h-9 text-[#000000] border hover:text-main_bg_color rounded hover:bg-[#000000] flex justify-center items-center cursor-pointer 
+                        className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded border text-[#000000] hover:bg-[#000000] hover:text-main_bg_color 
                  `}
                       >
                         <FaAnglesRight />
                       </p>
                     </div>
                   </Flex>
-                  <div>
+                  <div className="mt-5 sm:mt-0">
                     <p>{`Products from ${
                       page === 1
                         ? page * sortProduct - sortProduct + 1
