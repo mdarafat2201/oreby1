@@ -6,6 +6,7 @@ import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 import { ShopRightPagecontext } from "../../ShopComponent/ShopRight/ShopRight";
 import { FetcherProduct } from "../../../Redux/AllSlice/ProductSlice/ProductSlice.js";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 const ShopRightBottom = () => {
   const dispatch = useDispatch();
   const [allProducts, setallProducts] = useState([]);
@@ -13,11 +14,10 @@ const ShopRightBottom = () => {
   const value = useContext(ShopRightPagecontext);
   const { GridLayout, sortProduct } = value;
   useEffect(() => {
-    dispatch(FetcherProduct());
+    dispatch(FetcherProduct("https://dummyjson.com/products"));
   }, []);
 
   const { data, status } = useSelector((state) => state.product);
-  console.log(status);
 
   useEffect(() => {
     if (status.payload === "IDLE") {
@@ -82,24 +82,26 @@ const ShopRightBottom = () => {
                       className={`  ${GridLayout ? "w-full" : "w-full sm:w-[48%] lg:w-[33%]"}`}
                       key={productItem.id}
                     >
-                      <Card
-                        img={productItem.thumbnail}
-                        productTitle={productItem.title}
-                        colorVariant={"Balck"}
-                        price={
-                          productItem.price - productItem.discountPercentage
-                        }
-                        badge={
-                          <Button
-                            className={"bg-black px-8 py-[7px] text-white"}
-                            title={
-                              productItem.discountPercentage
-                                ? `$${productItem.discountPercentage}`
-                                : "new"
-                            }
-                          />
-                        }
-                      />
+                      <Link to={`/Product-Details/${productItem.id}`}>
+                        <Card
+                          img={productItem.thumbnail}
+                          productTitle={productItem.title}
+                          colorVariant={"Balck"}
+                          price={
+                            productItem.price - productItem.discountPercentage
+                          }
+                          badge={
+                            <Button
+                              className={"bg-black px-8 py-[7px] text-white"}
+                              title={
+                                productItem.discountPercentage
+                                  ? `$${productItem.discountPercentage}`
+                                  : "new"
+                              }
+                            />
+                          }
+                        />
+                      </Link>
                     </div>
                   ))}
               </Flex>

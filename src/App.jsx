@@ -7,14 +7,16 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayaout />}>
       <Route index element={<Home />} />
       <Route path="/shop" element={<Shop />} />
-    </Route>
-  )
+      <Route path="/Product-Details/:productId" element={<ProductDetails />} />
+    </Route>,
+  ),
 );
 function App() {
   return (
