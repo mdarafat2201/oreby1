@@ -21,7 +21,7 @@ const ShopRightBottom = () => {
 
   useEffect(() => {
     if (status.payload === "IDLE") {
-      setallProducts(data.payload);
+      setallProducts(data.payload.products);
     }
   }, [status.payload, data.payload]);
 
