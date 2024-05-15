@@ -30,13 +30,10 @@ const ProductDetails = () => {
             </div>
             {status.payload === "LOADING" ? (
               <div>
-                <Flex className={"items-center justify-between"}>
-                  <div className="w-[48%]">
-                    <Loading />
-                  </div>
-                  <div className="w-[48%]">
-                    <Loading />
-                  </div>
+                <Flex
+                  className={"flex-wrap items-center justify-between gap-y-10"}
+                >
+                  <Loading className={"w-[48%]"} sortProductAll={4} />
                 </Flex>
               </div>
             ) : status.payload === "ERROR" ? (

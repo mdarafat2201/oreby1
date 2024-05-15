@@ -34,7 +34,6 @@ export const FetcherProduct = (apiUrl) => {
       dispatch(SetProduts(data));
       dispatch(setStatus(ApiStatus.IDLE));
     } catch (error) {
-      console.log(error);
       dispatch(setStatus(ApiStatus.ERROR));
     }
   };

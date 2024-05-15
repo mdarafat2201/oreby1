@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, createContext } from "react";
 import Card from "../Card.jsx";
 import Button from "../Button";
 import Flex from "../Flex.jsx";
@@ -7,6 +7,8 @@ import { ShopRightPagecontext } from "../../ShopComponent/ShopRight/ShopRight";
 import { FetcherProduct } from "../../../Redux/AllSlice/ProductSlice/ProductSlice.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Loading from "../Loading.jsx";
+
 const ShopRightBottom = () => {
   const dispatch = useDispatch();
   const [allProducts, setallProducts] = useState([]);
@@ -50,22 +52,8 @@ const ShopRightBottom = () => {
     <>
       <div className="mt-8">
         {status.payload == "LOADING" ? (
-          <div className="flex h-[100vh] items-center justify-center">
-            <div class="mx-auto w-full max-w-sm rounded-md border border-blue-300 p-4 shadow">
-              <div class="flex animate-pulse space-x-4">
-                <div class="h-10 w-10 rounded-full bg-slate-700"></div>
-                <div class="flex-1 space-y-6 py-1">
-                  <div class="h-2 rounded bg-slate-700"></div>
-                  <div class="space-y-3">
-                    <div class="grid grid-cols-3 gap-4">
-                      <div class="col-span-2 h-2 rounded bg-slate-700"></div>
-                      <div class="col-span-1 h-2 rounded bg-slate-700"></div>
-                    </div>
-                    <div class="h-2 rounded bg-slate-700"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="flex flex-wrap items-center justify-between gap-y-10">
+            <Loading className={"w-[31%]"} sortProductAll={9} />
           </div>
         ) : status.payload === "ERROR" ? (
           <h1 className="flex h-[100vh] items-center justify-center bg-green-600">
