@@ -6,6 +6,7 @@ import { FetcherProduct } from "../../Redux/AllSlice/ProductSlice/ProductSlice";
 import ProductDetailstop from "../../Component/ProductDetailsComponent/ProductDetailstop";
 import Loading from "../../Component/CommonConponent/Loading";
 import Flex from "../../Component/CommonConponent/Flex";
+import RatingStar from "../../Component/ProductDetailsComponent/RatingStar";
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const [EachProduct, setEachProduct] = useState({});
@@ -43,7 +44,10 @@ const ProductDetails = () => {
             )}
 
             <div>
-              <h1>{EachProduct.title ? EachProduct.title : "Product"}</h1>
+              <h1 className="font-DMsans  text-[39px]  font-bold text-main_font_color">
+                {EachProduct.title ? EachProduct.title : "Product"}
+              </h1>
+              <RatingStar rating={data.payload.rating} />
             </div>
           </div>
         </div>
