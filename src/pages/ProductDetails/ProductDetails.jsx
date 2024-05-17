@@ -47,7 +47,7 @@ const ProductDetails = () => {
               <h1 className="font-DMsans  text-[39px]  font-bold text-main_font_color">
                 {EachProduct.title ? EachProduct.title : "Product"}
               </h1>
-              <RatingStar rating={data.payload.rating} />
+              <RatingStar rating={EachProduct.rating} />
             </div>
           </div>
         </div>

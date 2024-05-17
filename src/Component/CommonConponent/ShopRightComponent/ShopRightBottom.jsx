@@ -76,7 +76,14 @@ const ShopRightBottom = () => {
                           productTitle={productItem.title}
                           colorVariant={"Balck"}
                           price={
-                            productItem.price - productItem.discountPercentage
+                            productItem.price -
+                              productItem.discountPercentage >=
+                            Math.floor(
+                              productItem.price -
+                                productItem.discountPercentage,
+                            )
+                              ? `${Math.floor(productItem.price - productItem.discountPercentage)}.50`
+                              : `${Math.floor(productItem.price - productItem.discountPercentage)}`
                           }
                           badge={
                             <Button
