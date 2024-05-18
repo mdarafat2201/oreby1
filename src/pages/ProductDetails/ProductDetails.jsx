@@ -7,6 +7,7 @@ import ProductDetailstop from "../../Component/ProductDetailsComponent/ProductDe
 import Loading from "../../Component/CommonConponent/Loading";
 import Flex from "../../Component/CommonConponent/Flex";
 import RatingStar from "../../Component/ProductDetailsComponent/RatingStar";
+import ProductInfo from "../../Component/ProductDetailsComponent/ProductInfo";
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const [EachProduct, setEachProduct] = useState({});
@@ -20,6 +21,7 @@ const ProductDetails = () => {
       setEachProduct(data.payload);
     }
   }, [status.payload, data.payload]);
+  console.log(EachProduct);
 
   return (
     <>
@@ -48,6 +50,24 @@ const ProductDetails = () => {
                 {EachProduct.title ? EachProduct.title : "Product"}
               </h1>
               <RatingStar rating={EachProduct.rating} />
+              <div>
+                <Flex className={"mt-5 items-center gap-x-5"}>
+                  <span className="font-DMsans text-[16px] font-normal text-secondary_font_color line-through">
+                    ${EachProduct.price}
+                  </span>
+                  <span className="font-DMsans text-[20px] font-bold text-main_font_color ">
+                    $
+                    {Math.round(
+                      EachProduct.price -
+                        (EachProduct.price * EachProduct.discountPercentage) /
+                          100,
+                    )}
+                  </span>
+                </Flex>
+              </div>
+            </div>
+            <div>
+              <ProductInfo ProductStock={EachProduct.stock} />
             </div>
           </div>
         </div>
