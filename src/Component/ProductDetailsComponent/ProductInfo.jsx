@@ -1,6 +1,9 @@
 import React from "react";
 import Flex from "../CommonConponent/Flex";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import Button from "../CommonConponent/Button";
+import ProductDescibtion from "../CommonConponent/ProductDescibtion/ProductDescibtion";
+import Reviews from "../CommonConponent/ProductDescibtion/Reviews";
 
 const ProductInfo = ({ ProductStock }) => {
   const colorItem = [
@@ -10,6 +13,7 @@ const ProductInfo = ({ ProductStock }) => {
     { id: 4, colorcode: "#B6B6B6" },
     { id: 5, colorcode: "#15CBA5" },
   ];
+
   return (
     <>
       <div>
@@ -26,6 +30,7 @@ const ProductInfo = ({ ProductStock }) => {
                   {colorItem?.map((item) => (
                     <div
                       className={`h-[20px] w-[20px] transform-gpu cursor-pointer rounded-full hover:scale-150 `}
+                      key={item}
                       style={{ background: item.colorcode }}
                     ></div>
                   ))}
@@ -80,7 +85,9 @@ const ProductInfo = ({ ProductStock }) => {
               </div>
             </Flex>
           </div>
+
           {/**quantity component */}
+          <hr />
           {/**stock component */}
           <div>
             <Flex className={"items-center gap-x-14"}>
@@ -93,6 +100,34 @@ const ProductInfo = ({ ProductStock }) => {
             </Flex>
           </div>
           {/**stock component */}
+          {/**wishlity and add to cart buttons */}
+          <div>
+            <Flex className={"items-center gap-x-5"}>
+              <Button
+                title={"Add to Wish List"}
+                className={
+                  "rounded border-2 border-main_font_color px-12 py-4 font-DMsans font-bold text-main_font_color "
+                }
+              />
+              <Button
+                title={"Add to Cart"}
+                className={
+                  "rounded border-2 border-main_font_color bg-main_font_color px-14 py-4 font-DMsans font-bold text-main_bg_color "
+                }
+              />
+            </Flex>
+          </div>
+          {/**wishlity and add to cart buttons */}
+          <hr />
+          {/** dop dun component*/}
+          <ProductDescibtion title={"FEATURES & DETAILS"} />
+          <hr />
+          <ProductDescibtion title={"SHIPPING & RETURNS"} />
+          {/**dop dun component */}
+          <hr />
+          {/**Reviews component */}
+          <Reviews />
+          {/**Reviews component */}
         </Flex>
       </div>
     </>

@@ -3,6 +3,7 @@ import Logo from "../../../assets/Logo.png";
 import Flex from "../../CommonConponent/Flex";
 import { RxCross2 } from "react-icons/rx";
 import { FaBars } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 const Header = () => {
   const [isShow, setisShow] = useState(false);
 
@@ -13,9 +14,9 @@ const Header = () => {
 
   return (
     <>
-      <div className="py-8 bg-main_bg_color px-4 px-sm-0">
+      <div className="px-sm-0 bg-main_bg_color px-4 py-8">
         <div className="container ">
-          <Flex className="justify-between items-center">
+          <Flex className="items-center justify-between">
             <div>
               <picture>
                 <img src={Logo} alt={Logo} />
@@ -23,32 +24,32 @@ const Header = () => {
             </div>
             <div>
               <Flex
-                className={`absolute sm:flex-row sm:static sm:gap-x-5 ${
+                className={`absolute sm:static sm:flex-row sm:gap-x-5 ${
                   isShow === true
-                    ? "bg-gray-300 text-center  top-[70px] left-0 flex-col w-full z-10 transition-all "
+                    ? "left-0 top-[70px]  z-10 w-full flex-col bg-gray-300 text-center transition-all "
                     : " left-[-100%]  "
                 } `}
               >
                 <li>
-                  <a
-                    href="#"
-                    className="menuItem transition-all hover:text-main_font_color hover:font-bold"
+                  <NavLink
+                    index
+                    className="menuItem transition-all hover:font-bold hover:text-main_font_color"
                   >
                     Home
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="menuItem transition-all hover:text-main_font_color hover:font-bold"
+                  <NavLink
+                    to={"/shop"}
+                    className="menuItem transition-all hover:font-bold hover:text-main_font_color"
                   >
                     Shop
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="menuItem transition-all hover:text-main_font_color hover:font-bold"
+                    className="menuItem transition-all hover:font-bold hover:text-main_font_color"
                   >
                     About
                   </a>
@@ -56,7 +57,7 @@ const Header = () => {
                 <li>
                   <a
                     href="#"
-                    className="menuItem transition-all hover:text-main_font_color hover:font-bold"
+                    className="menuItem transition-all hover:font-bold hover:text-main_font_color"
                   >
                     Contacts
                   </a>
@@ -64,7 +65,7 @@ const Header = () => {
                 <li>
                   <a
                     href="#"
-                    className="menuItem transition-all hover:text-main_font_color hover:font-bold"
+                    className="menuItem transition-all hover:font-bold hover:text-main_font_color"
                   >
                     Journal
                   </a>

@@ -21,7 +21,6 @@ const ProductDetails = () => {
       setEachProduct(data.payload);
     }
   }, [status.payload, data.payload]);
-  console.log(EachProduct);
 
   return (
     <>
