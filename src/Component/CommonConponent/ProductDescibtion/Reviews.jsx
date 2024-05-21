@@ -1,29 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import Flex from "../Flex";
 import { IoIosStar } from "react-icons/io";
 import Button from "../Button";
-
+import ArafatImg from "../../../assets/arafat.jpg";
 const Reviews = () => {
+  const [Descriptionshow, setDescriptionshow] = useState("");
   return (
     <>
       <div className="mt-16">
         <Flex className={" flex-col gap-y-10"}>
           <div>
             <Flex className={"items-center gap-x-16"}>
-              <h1 className="font-DMsans text-lg font-normal text-secondary_font_color">
-                Description
-              </h1>
-              <h2 className="font-DMsans text-lg font-bold text-main_font_color">
-                {"Reviews (1)"}
-              </h2>
+              <div onClick={() => setDescriptionshow("Description")}>
+                <h1 className=" cursor-pointer font-DMsans text-lg font-normal text-secondary_font_color">
+                  Description
+                </h1>
+              </div>
+              <div onClick={() => setDescriptionshow("")}>
+                <h2 className="cursor-pointer font-DMsans text-lg font-bold text-main_font_color">
+                  {"Reviews (1)"}
+                </h2>
+              </div>
             </Flex>
           </div>
-
-          <div>
-            <h2 className=" font-DMsans text-sm font-normal text-secondary_font_color">
-              1 review for Product
-            </h2>
-          </div>
+          {Descriptionshow === "Description" ? (
+            <div>
+              <h2 className=" font-DMsans text-sm font-normal text-secondary_font_color">
+                1 review for Product
+              </h2>
+            </div>
+          ) : (
+            <div>
+              {[...new Array(5)].map((_, index) => (
+                <div>
+                  <Flex className={"items-center gap-x-8"}>
+                    <div className="h-14 w-14 rounded-full">
+                      <img
+                        src={ArafatImg}
+                        alt={ArafatImg}
+                        className="h-full w-full rounded-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h2 className="font-DMsans text-lg font-normal  text-main_font_color">
+                        Md Arafat
+                      </h2>
+                    </div>
+                  </Flex>
+                  <div>
+                    <p className="font-DMsans text-lg font-normal text-secondary_font_color">
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s, when an unknown
+                      printer took a galley of type and scrambled it to make a
+                      type specimen book. It has survived not only five
+                      centuries, but also the leap into electronic typesetting,
+                      remaining essentially unchanged.
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           <hr />
           <div>
