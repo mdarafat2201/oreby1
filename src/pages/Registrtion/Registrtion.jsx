@@ -2,8 +2,42 @@ import React from "react";
 import RegistrtionTop from "../../Component/RegistrtionComponent/RegistrtionTop/RegistrtionTop";
 import SignUpInput from "../../Component/RegistrtionComponent/SignUpInput/SignUpInput";
 import Flex from "../../Component/CommonConponent/Flex";
+import { useState } from "react";
+import Button from "../../Component/CommonConponent/Button";
 
 const Registrtion = () => {
+  const [userInfo, setuserInfo] = useState({
+    FirstName: "",
+    LastName: "",
+    Email: "",
+    Telephone: "",
+    Address1: "",
+    Address2: "",
+    City: "",
+    PostCode: "",
+    Divison: "",
+    District: "",
+    Password: "",
+    RepeatPassword: "",
+    agreement: false,
+    subribeYes: false,
+    subribeNo: false,
+  });
+  //handleUserInput function implement
+  const handleUserInput = (e) => {
+    if (e.target.checkbox) {
+      setuserInfo({
+        ...userInfo,
+        [e.target.id]: true,
+      });
+    } else {
+      setuserInfo({
+        ...userInfo,
+        [e.target.id]: e.target.value,
+      });
+    }
+  };
+  console.log(userInfo);
   return (
     <>
       <div className="py-20">
@@ -29,6 +63,7 @@ const Registrtion = () => {
                         inputType={"text"}
                         placeHolder={"First Name"}
                         inputId={"FirstName"}
+                        oninputChange={handleUserInput}
                       />
 
                       <SignUpInput
@@ -37,6 +72,7 @@ const Registrtion = () => {
                         inputType={"text"}
                         placeHolder={"Last Name"}
                         inputId={"LastName"}
+                        oninputChange={handleUserInput}
                       />
                       <SignUpInput
                         labeTitle={"Email address"}
@@ -44,6 +80,7 @@ const Registrtion = () => {
                         inputType={"email"}
                         placeHolder={"company@domain.com"}
                         inputId={"Email"}
+                        oninputChange={handleUserInput}
                       />
                       <SignUpInput
                         labeTitle={"Telephone"}
@@ -51,6 +88,7 @@ const Registrtion = () => {
                         inputType={"number"}
                         placeHolder={"Your phone number"}
                         inputId={"Telephone"}
+                        oninputChange={handleUserInput}
                       />
                     </Flex>
                   </div>
@@ -76,6 +114,7 @@ const Registrtion = () => {
                         inputType={"text"}
                         placeHolder={"4279 Zboncak Port Suite 6212"}
                         inputId={"Address1"}
+                        oninputChange={handleUserInput}
                       />
 
                       <SignUpInput
@@ -84,6 +123,7 @@ const Registrtion = () => {
                         inputType={"text"}
                         placeHolder={"Address 2"}
                         inputId={"Address2"}
+                        oninputChange={handleUserInput}
                       />
                       <SignUpInput
                         labeTitle={"City"}
@@ -91,6 +131,7 @@ const Registrtion = () => {
                         inputType={"text"}
                         placeHolder={"Your city"}
                         inputId={"City"}
+                        oninputChange={handleUserInput}
                       />
                       <SignUpInput
                         labeTitle={"Post Code"}
@@ -98,6 +139,7 @@ const Registrtion = () => {
                         inputType={"number"}
                         placeHolder={"05228"}
                         inputId={"PostCode"}
+                        oninputChange={handleUserInput}
                       />
                       <div className="w-[36%]">
                         <h2 className=" font-DMsans text-base font-bold text-main_font_color">
@@ -109,6 +151,7 @@ const Registrtion = () => {
                           className={
                             "w-full border-b-2 border-b-secondary_bg_color py-4"
                           }
+                          onChange={handleUserInput}
                         >
                           <option value={"Pleaseselect"}>Please select</option>
                           <option value={"dhaka"}>dhaka</option>
@@ -117,14 +160,15 @@ const Registrtion = () => {
                       </div>
                       <div className="w-[36%]">
                         <h2 className=" font-DMsans text-base font-bold text-main_font_color">
-                          Divison
+                          District
                         </h2>
                         <select
-                          name="Divison"
-                          id="Divison"
+                          name="District"
+                          id="District"
                           className={
                             "w-full border-b-2 border-b-secondary_bg_color py-4"
                           }
+                          onChange={handleUserInput}
                         >
                           <option value={"Pleaseselect"}>Please select</option>
                           <option value={"dhaka"}>dhaka</option>
@@ -154,6 +198,7 @@ const Registrtion = () => {
                         inputType={"password"}
                         placeHolder={"Password"}
                         inputId={"Password"}
+                        oninputChange={handleUserInput}
                       />
 
                       <SignUpInput
@@ -162,12 +207,70 @@ const Registrtion = () => {
                         inputType={"password"}
                         placeHolder={"Repeat Password"}
                         inputId={"RepeatPassword"}
+                        oninputChange={handleUserInput}
                       />
                     </Flex>
                   </div>
                 </form>
               </div>
               {/** Password infomation */}
+              <hr />
+              {/** chek infomation */}
+              <div>
+                <Flex className={"flex-col gap-y-6"}>
+                  <div>
+                    <Flex className={"items-center gap-x-4"}>
+                      <input
+                        type="checkbox"
+                        id="agreement"
+                        name="agreement"
+                        onChange={handleUserInput}
+                      />
+                      <p className="font-DMsans text-base font-normal text-secondary_font_color">
+                        I have read and agree to the Privacy Policy
+                      </p>
+                    </Flex>
+                  </div>
+                  <div>
+                    <Flex className={"items-center gap-x-10"}>
+                      <p className="font-DMsans text-base font-normal text-secondary_font_color">
+                        I have read and agree to the Privacy Policy
+                      </p>
+                      <Flex className={"items-center gap-x-4"}>
+                        <input
+                          type="checkbox"
+                          id="subribeYes"
+                          name="subribeYes"
+                          onChange={handleUserInput}
+                        />
+                        <p className="font-DMsans text-base font-normal text-secondary_font_color">
+                          Yes
+                        </p>
+                      </Flex>
+                      <Flex className={"items-center gap-x-4"}>
+                        <input
+                          type="checkbox"
+                          id="subribeNo"
+                          name="subribeNo"
+                          onChange={handleUserInput}
+                        />
+                        <p className="font-DMsans text-base font-normal text-secondary_font_color">
+                          No
+                        </p>
+                      </Flex>
+                    </Flex>
+                  </div>
+                  <div>
+                    <Button
+                      title={"Log in"}
+                      className={
+                        "rounded-sm bg-main_font_color px-16 py-4 font-DMsans text-base font-bold text-main_bg_color"
+                      }
+                    />
+                  </div>
+                </Flex>
+              </div>
+              {/** chek infomation */}
             </Flex>
           </div>
         </div>
