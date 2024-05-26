@@ -23,6 +23,17 @@ const Registrtion = () => {
     subribeYes: false,
     subribeNo: false,
   });
+  const [userInfoError, setuserInfoError] = useState({
+    FirstNameError: "",
+    EmailError: "",
+    TelephoneError: "",
+    Address1Error: "",
+    DistrictError: "",
+    PasswordError: "",
+    RepeatPasswordError: "",
+    Passwordnotmatchd: "",
+    agreementError: false,
+  });
   //handleUserInput function implement
   const handleUserInput = (e) => {
     if (e.target.checkbox) {
@@ -38,6 +49,70 @@ const Registrtion = () => {
     }
   };
   console.log(userInfo);
+  //handleSignup function implement
+  const handleSignup = () => {
+    const {
+      FirstName,
+      Email,
+      Telephone,
+      Address1,
+      District,
+      Password,
+      RepeatPassword,
+      agreement,
+    } = userInfo;
+
+    if (!FirstName) {
+      setuserInfoError({
+        ...userInfoError,
+        FirstNameError: "First Name missing",
+      });
+    } else if (!Email) {
+      setuserInfoError({
+        ...userInfoError,
+        EmailError: "Email missing",
+      });
+    } else if (!Telephone) {
+      setuserInfoError({
+        ...userInfoError,
+        TelephoneError: "Telephone missing",
+      });
+    } else if (!District) {
+      setuserInfoError({
+        ...userInfoError,
+        DistrictError: "District missing",
+      });
+    } else if (!Address1) {
+      setuserInfoError({
+        ...userInfoError,
+        Address1Error: "Address1 missing",
+      });
+    } else if (!Password) {
+      setuserInfoError({
+        ...userInfoError,
+        PasswordError: "Password missing",
+      });
+    } else if (!RepeatPassword) {
+      setuserInfoError({
+        ...userInfoError,
+        RepeatPasswordError: "RepeatPassword missing",
+      });
+    } else if (Password !== RepeatPassword) {
+      setuserInfoError({
+        ...userInfoError,
+        Passwordnotmatchd: "Password not matchd",
+      });
+    } else if (!agreement) {
+      setuserInfoError({
+        ...userInfoError,
+        agreementError: "agreement missing",
+      });
+      agreementError("agreement missing");
+    } else {
+      alert("Everything is ok no error occured");
+    }
+  };
+
   return (
     <>
       <div className="py-20">
@@ -260,7 +335,7 @@ const Registrtion = () => {
                       </Flex>
                     </Flex>
                   </div>
-                  <div>
+                  <div onClick={handleSignup}>
                     <Button
                       title={"Log in"}
                       className={
