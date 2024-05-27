@@ -70,45 +70,92 @@ const Registrtion = () => {
     } else if (!Email) {
       setuserInfoError({
         ...userInfoError,
+        FirstNameError: "",
         EmailError: "Email missing",
       });
     } else if (!Telephone) {
       setuserInfoError({
         ...userInfoError,
+        FirstNameError: "",
+        EmailError: "",
         TelephoneError: "Telephone missing",
       });
     } else if (!District) {
       setuserInfoError({
         ...userInfoError,
+        FirstNameError: "",
+        EmailError: "",
+        TelephoneError: "",
         DistrictError: "District missing",
       });
     } else if (!Address1) {
       setuserInfoError({
         ...userInfoError,
+        FirstNameError: "",
+        EmailError: "",
+        TelephoneError: "",
+        DistrictError: "",
         Address1Error: "Address1 missing",
       });
     } else if (!Password) {
       setuserInfoError({
         ...userInfoError,
+        FirstNameError: "",
+        EmailError: "",
+        TelephoneError: "",
+        DistrictError: "",
+        Address1Error: "",
         PasswordError: "Password missing",
       });
     } else if (!RepeatPassword) {
       setuserInfoError({
         ...userInfoError,
+        FirstNameError: "",
+        EmailError: "",
+        TelephoneError: "",
+        DistrictError: "",
+        Address1Error: "",
+        PasswordError: "",
         RepeatPasswordError: "RepeatPassword missing",
       });
     } else if (Password !== RepeatPassword) {
       setuserInfoError({
         ...userInfoError,
+        FirstNameError: "",
+        EmailError: "",
+        TelephoneError: "",
+        DistrictError: "",
+        Address1Error: "",
+        PasswordError: "",
+        RepeatPasswordError: "",
         Passwordnotmatchd: "Password not matchd",
       });
-    } else if (!agreement) {
+    } else if (agreement == false) {
       setuserInfoError({
         ...userInfoError,
+        FirstNameError: "",
+        EmailError: "",
+        TelephoneError: "",
+        DistrictError: "",
+        Address1Error: "",
+        PasswordError: "",
+        RepeatPasswordError: "",
+        Passwordnotmatchd: "",
         agreementError: "agreement missing",
       });
-      agreementError("agreement missing");
     } else {
+      setuserInfoError({
+        ...userInfoError,
+        FirstNameError: "",
+        EmailError: "",
+        TelephoneError: "",
+        DistrictError: "",
+        Address1Error: "",
+        PasswordError: "",
+        RepeatPasswordError: "",
+        Passwordnotmatchd: "",
+        agreementError: "",
+      });
       alert("Everything is ok no error occured");
     }
   };
@@ -132,39 +179,63 @@ const Registrtion = () => {
 
                   <div>
                     <Flex className=" flex-wrap items-center gap-x-10 gap-y-5">
-                      <SignUpInput
-                        labeTitle={"First Name"}
-                        className={"w-[36%]"}
-                        inputType={"text"}
-                        placeHolder={"First Name"}
-                        inputId={"FirstName"}
-                        oninputChange={handleUserInput}
-                      />
-
-                      <SignUpInput
-                        labeTitle={"Last Name"}
-                        className={"w-[36%]"}
-                        inputType={"text"}
-                        placeHolder={"Last Name"}
-                        inputId={"LastName"}
-                        oninputChange={handleUserInput}
-                      />
-                      <SignUpInput
-                        labeTitle={"Email address"}
-                        className={"w-[36%]"}
-                        inputType={"email"}
-                        placeHolder={"company@domain.com"}
-                        inputId={"Email"}
-                        oninputChange={handleUserInput}
-                      />
-                      <SignUpInput
-                        labeTitle={"Telephone"}
-                        className={"w-[36%]"}
-                        inputType={"number"}
-                        placeHolder={"Your phone number"}
-                        inputId={"Telephone"}
-                        oninputChange={handleUserInput}
-                      />
+                      <div className="w-[36%]">
+                        <SignUpInput
+                          labeTitle={"First Name"}
+                          className={`${userInfoError.FirstNameError ? "border-b-2 border-b-red-500 py-4" : "border-b-2 border-b-secondary_bg_color py-4"}`}
+                          inputType={"text"}
+                          placeHolder={"First Name"}
+                          inputId={"FirstName"}
+                          oninputChange={handleUserInput}
+                        />
+                        {userInfoError.FirstNameError && (
+                          <p className="text-red-400">
+                            {userInfoError.FirstNameError}
+                          </p>
+                        )}
+                      </div>
+                      <div className="w-[36%]">
+                        <SignUpInput
+                          labeTitle={"Last Name"}
+                          className={
+                            "border-b-2 border-b-secondary_bg_color py-4"
+                          }
+                          inputType={"text"}
+                          placeHolder={"Last Name"}
+                          inputId={"LastName"}
+                          oninputChange={handleUserInput}
+                        />
+                      </div>
+                      <div className="w-[36%]">
+                        <SignUpInput
+                          labeTitle={"Email address"}
+                          className={`${userInfoError.EmailError ? "border-b-2 border-b-red-500 py-4" : "border-b-2 border-b-secondary_bg_color py-4"}`}
+                          inputType={"email"}
+                          placeHolder={"company@domain.com"}
+                          inputId={"Email"}
+                          oninputChange={handleUserInput}
+                        />
+                        {userInfoError.EmailError && (
+                          <p className="text-red-400">
+                            {userInfoError.EmailError}
+                          </p>
+                        )}
+                      </div>
+                      <div className="w-[36%]">
+                        <SignUpInput
+                          labeTitle={"Telephone"}
+                          className={`${userInfoError.TelephoneError ? "border-b-2 border-b-red-500 py-4" : "border-b-2 border-b-secondary_bg_color py-4"}`}
+                          inputType={"number"}
+                          placeHolder={"Your phone number"}
+                          inputId={"Telephone"}
+                          oninputChange={handleUserInput}
+                        />
+                        {userInfoError.TelephoneError && (
+                          <p className="text-red-400">
+                            {userInfoError.TelephoneError}
+                          </p>
+                        )}
+                      </div>
                     </Flex>
                   </div>
                 </form>
@@ -183,39 +254,58 @@ const Registrtion = () => {
 
                   <div>
                     <Flex className=" flex-wrap items-center gap-x-10 gap-y-5">
-                      <SignUpInput
-                        labeTitle={"Address 1"}
-                        className={"w-[36%]"}
-                        inputType={"text"}
-                        placeHolder={"4279 Zboncak Port Suite 6212"}
-                        inputId={"Address1"}
-                        oninputChange={handleUserInput}
-                      />
+                      <div className="w-[36%]">
+                        <SignUpInput
+                          labeTitle={"Address 1"}
+                          className={`${userInfoError.Address1Error ? "border-b-2 border-b-red-500 py-4" : "border-b-2 border-b-secondary_bg_color py-4"}`}
+                          inputType={"text"}
+                          placeHolder={"4279 Zboncak Port Suite 6212"}
+                          inputId={"Address1"}
+                          oninputChange={handleUserInput}
+                        />
+                        {userInfoError.Address1Error && (
+                          <p className="text-red-400">
+                            {userInfoError.Address1Error}
+                          </p>
+                        )}
+                      </div>
+                      <div className="w-[36%]">
+                        <SignUpInput
+                          labeTitle={"Address 2"}
+                          className={
+                            "border-b-2 border-b-secondary_bg_color py-4"
+                          }
+                          inputType={"text"}
+                          placeHolder={"Address 2"}
+                          inputId={"Address2"}
+                          oninputChange={handleUserInput}
+                        />
+                      </div>
+                      <div className="w-[36%]">
+                        <SignUpInput
+                          labeTitle={"City"}
+                          className={
+                            "border-b-2 border-b-secondary_bg_color py-4"
+                          }
+                          inputType={"text"}
+                          placeHolder={"Your city"}
+                          inputId={"City"}
+                          oninputChange={handleUserInput}
+                        />
+                      </div>
+                      <div className="w-[36%]">
+                        <SignUpInput
+                          labeTitle={"Post Code"}
+                          className={
+                            "border-b-2 border-b-secondary_bg_color py-4"
+                          }
+                          inputType={"number"}
+                          placeHolder={"05228"}
+                          inputId={"PostCode"}
+                          oninputChange={handleUserInput}
+                        />
+                      </div>
 
-                      <SignUpInput
-                        labeTitle={"Address 2"}
-                        className={"w-[36%]"}
-                        inputType={"text"}
-                        placeHolder={"Address 2"}
-                        inputId={"Address2"}
-                        oninputChange={handleUserInput}
-                      />
-                      <SignUpInput
-                        labeTitle={"City"}
-                        className={"w-[36%]"}
-                        inputType={"text"}
-                        placeHolder={"Your city"}
-                        inputId={"City"}
-                        oninputChange={handleUserInput}
-                      />
-                      <SignUpInput
-                        labeTitle={"Post Code"}
-                        className={"w-[36%]"}
-                        inputType={"number"}
-                        placeHolder={"05228"}
-                        inputId={"PostCode"}
-                        oninputChange={handleUserInput}
-                      />
                       <div className="w-[36%]">
                         <h2 className=" font-DMsans text-base font-bold text-main_font_color">
                           Divison
@@ -240,15 +330,18 @@ const Registrtion = () => {
                         <select
                           name="District"
                           id="District"
-                          className={
-                            "w-full border-b-2 border-b-secondary_bg_color py-4"
-                          }
+                          className={`${userInfoError.DistrictError ? "w-full border-b-2 border-b-red-500 py-4" : "w-full border-b-2 border-b-secondary_bg_color py-4"}`}
                           onChange={handleUserInput}
                         >
                           <option value={"Pleaseselect"}>Please select</option>
                           <option value={"dhaka"}>dhaka</option>
                           <option value={"mymensing"}>mymensing</option>
                         </select>
+                        {userInfoError.DistrictError && (
+                          <p className="text-red-400">
+                            {userInfoError.DistrictError}
+                          </p>
+                        )}
                       </div>
                     </Flex>
                   </div>
@@ -267,23 +360,41 @@ const Registrtion = () => {
 
                   <div>
                     <Flex className=" flex-wrap items-center gap-x-10 gap-y-5">
-                      <SignUpInput
-                        labeTitle={"Password"}
-                        className={"w-[36%]"}
-                        inputType={"password"}
-                        placeHolder={"Password"}
-                        inputId={"Password"}
-                        oninputChange={handleUserInput}
-                      />
-
-                      <SignUpInput
-                        labeTitle={"Repeat Password"}
-                        className={"w-[36%]"}
-                        inputType={"password"}
-                        placeHolder={"Repeat Password"}
-                        inputId={"RepeatPassword"}
-                        oninputChange={handleUserInput}
-                      />
+                      <div className="w-[36%]">
+                        <SignUpInput
+                          labeTitle={"Password"}
+                          className={`${userInfoError.PasswordError ? "w-full border-b-2 border-b-red-500 py-4" : "w-full border-b-2 border-b-secondary_bg_color py-4"}`}
+                          inputType={"password"}
+                          placeHolder={"Password"}
+                          inputId={"Password"}
+                          oninputChange={handleUserInput}
+                        />
+                        {userInfoError.PasswordError && (
+                          <p className="text-red-400">
+                            {userInfoError.PasswordError}
+                          </p>
+                        )}
+                      </div>
+                      <div className="w-[36%]">
+                        <SignUpInput
+                          labeTitle={"Repeat Password"}
+                          className={`${userInfoError.RepeatPasswordError ? "w-full border-b-2 border-b-red-500 py-4" : "w-full border-b-2 border-b-secondary_bg_color py-4"}`}
+                          inputType={"password"}
+                          placeHolder={"Repeat Password"}
+                          inputId={"RepeatPassword"}
+                          oninputChange={handleUserInput}
+                        />
+                        {userInfoError.RepeatPasswordError && (
+                          <p className="text-red-400">
+                            {userInfoError.RepeatPasswordError}
+                          </p>
+                        )}
+                        {userInfoError.Passwordnotmatchd && (
+                          <p className="text-red-400">
+                            {userInfoError.Passwordnotmatchd}
+                          </p>
+                        )}
+                      </div>
                     </Flex>
                   </div>
                 </form>
@@ -301,15 +412,19 @@ const Registrtion = () => {
                         name="agreement"
                         onChange={handleUserInput}
                       />
-                      <p className="font-DMsans text-base font-normal text-secondary_font_color">
-                        I have read and agree to the Privacy Policy
+                      <p
+                        className={`${userInfoError.agreementError ? "font-DMsans text-base font-normal text-red-500" : "font-DMsans text-base font-normal text-secondary_font_color"}`}
+                      >
+                        {userInfoError.agreementError
+                          ? userInfoError.agreementError
+                          : "I have read and agree to the Privacy Policy"}
                       </p>
                     </Flex>
                   </div>
                   <div>
                     <Flex className={"items-center gap-x-10"}>
                       <p className="font-DMsans text-base font-normal text-secondary_font_color">
-                        I have read and agree to the Privacy Policy
+                        I have read and agree
                       </p>
                       <Flex className={"items-center gap-x-4"}>
                         <input
