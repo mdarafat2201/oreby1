@@ -10,7 +10,8 @@ import {
 } from "react-router-dom";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Registrtion from "./pages/Registrtion/Registrtion";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayaout />}>
@@ -23,9 +24,10 @@ const router = createBrowserRouter(
 );
 function App() {
   return (
-    <RouterProvider router={router}>
-      <Home />
-    </RouterProvider>
+    <>
+      <ToastContainer />
+      <RouterProvider router={router}></RouterProvider>
+    </>
   );
 }
 

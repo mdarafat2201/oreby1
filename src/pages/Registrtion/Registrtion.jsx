@@ -4,8 +4,10 @@ import SignUpInput from "../../Component/RegistrtionComponent/SignUpInput/SignUp
 import Flex from "../../Component/CommonConponent/Flex";
 import { useState } from "react";
 import Button from "../../Component/CommonConponent/Button";
-
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { toast, Bounce } from "react-toastify";
 const Registrtion = () => {
+  const auth = getAuth();
   const [userInfo, setuserInfo] = useState({
     FirstName: "",
     LastName: "",
@@ -48,7 +50,7 @@ const Registrtion = () => {
       });
     }
   };
-  console.log(userInfo);
+
   //handleSignup function implement
   const handleSignup = () => {
     const {
@@ -156,7 +158,34 @@ const Registrtion = () => {
         Passwordnotmatchd: "",
         agreementError: "",
       });
-      alert("Everything is ok no error occured");
+      //crete user with firebase createUserWithEmailAndPassword
+      createUserWithEmailAndPassword(auth, userInfo.Email, userInfo.Password)
+        .then((userInfocadsiyal) => {
+          toast(`${userInfocadsiyal.FirstName} registrtion don`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        })
+        .catch((erro) => {
+          toast.error(`${erro.code}`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        });
     }
   };
 
