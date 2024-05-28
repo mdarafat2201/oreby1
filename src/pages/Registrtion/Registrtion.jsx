@@ -8,6 +8,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast, Bounce } from "react-toastify";
 const Registrtion = () => {
   const auth = getAuth();
+
   const [userInfo, setuserInfo] = useState({
     FirstName: "",
     LastName: "",
@@ -160,8 +161,8 @@ const Registrtion = () => {
       });
       //crete user with firebase createUserWithEmailAndPassword
       createUserWithEmailAndPassword(auth, userInfo.Email, userInfo.Password)
-        .then((userInfocadsiyal) => {
-          toast(`${userInfocadsiyal.FirstName} registrtion don`, {
+        .then((usercredential) => {
+          toast(`${userInfo.FirstName} registrtion don`, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -216,6 +217,7 @@ const Registrtion = () => {
                           placeHolder={"First Name"}
                           inputId={"FirstName"}
                           oninputChange={handleUserInput}
+                          value={userInfo.FirstName}
                         />
                         {userInfoError.FirstNameError && (
                           <p className="text-red-400">
@@ -233,6 +235,7 @@ const Registrtion = () => {
                           placeHolder={"Last Name"}
                           inputId={"LastName"}
                           oninputChange={handleUserInput}
+                          value={userInfo.LastName}
                         />
                       </div>
                       <div className="w-[36%]">
@@ -243,6 +246,7 @@ const Registrtion = () => {
                           placeHolder={"company@domain.com"}
                           inputId={"Email"}
                           oninputChange={handleUserInput}
+                          value={userInfo.Email}
                         />
                         {userInfoError.EmailError && (
                           <p className="text-red-400">
@@ -258,6 +262,7 @@ const Registrtion = () => {
                           placeHolder={"Your phone number"}
                           inputId={"Telephone"}
                           oninputChange={handleUserInput}
+                          value={userInfo.Telephone}
                         />
                         {userInfoError.TelephoneError && (
                           <p className="text-red-400">
@@ -291,6 +296,7 @@ const Registrtion = () => {
                           placeHolder={"4279 Zboncak Port Suite 6212"}
                           inputId={"Address1"}
                           oninputChange={handleUserInput}
+                          value={userInfo.Address1}
                         />
                         {userInfoError.Address1Error && (
                           <p className="text-red-400">
@@ -308,6 +314,7 @@ const Registrtion = () => {
                           placeHolder={"Address 2"}
                           inputId={"Address2"}
                           oninputChange={handleUserInput}
+                          value={userInfo.Address2}
                         />
                       </div>
                       <div className="w-[36%]">
@@ -320,6 +327,7 @@ const Registrtion = () => {
                           placeHolder={"Your city"}
                           inputId={"City"}
                           oninputChange={handleUserInput}
+                          value={userInfo.City}
                         />
                       </div>
                       <div className="w-[36%]">
@@ -332,6 +340,7 @@ const Registrtion = () => {
                           placeHolder={"05228"}
                           inputId={"PostCode"}
                           oninputChange={handleUserInput}
+                          value={userInfo.PostCode}
                         />
                       </div>
 
@@ -346,6 +355,7 @@ const Registrtion = () => {
                             "w-full border-b-2 border-b-secondary_bg_color py-4"
                           }
                           onChange={handleUserInput}
+                          value={userInfo.Divison}
                         >
                           <option value={"Pleaseselect"}>Please select</option>
                           <option value={"dhaka"}>dhaka</option>
@@ -361,6 +371,7 @@ const Registrtion = () => {
                           id="District"
                           className={`${userInfoError.DistrictError ? "w-full border-b-2 border-b-red-500 py-4" : "w-full border-b-2 border-b-secondary_bg_color py-4"}`}
                           onChange={handleUserInput}
+                          value={userInfo.District}
                         >
                           <option value={"Pleaseselect"}>Please select</option>
                           <option value={"dhaka"}>dhaka</option>
@@ -397,6 +408,7 @@ const Registrtion = () => {
                           placeHolder={"Password"}
                           inputId={"Password"}
                           oninputChange={handleUserInput}
+                          value={userInfo.Password}
                         />
                         {userInfoError.PasswordError && (
                           <p className="text-red-400">
@@ -412,6 +424,7 @@ const Registrtion = () => {
                           placeHolder={"Repeat Password"}
                           inputId={"RepeatPassword"}
                           oninputChange={handleUserInput}
+                          value={userInfo.RepeatPassword}
                         />
                         {userInfoError.RepeatPasswordError && (
                           <p className="text-red-400">
@@ -440,6 +453,7 @@ const Registrtion = () => {
                         id="agreement"
                         name="agreement"
                         onChange={handleUserInput}
+                        value={userInfo.agreement}
                       />
                       <p
                         className={`${userInfoError.agreementError ? "font-DMsans text-base font-normal text-red-500" : "font-DMsans text-base font-normal text-secondary_font_color"}`}
@@ -461,6 +475,7 @@ const Registrtion = () => {
                           id="subribeYes"
                           name="subribeYes"
                           onChange={handleUserInput}
+                          value={userInfo.subribeYes}
                         />
                         <p className="font-DMsans text-base font-normal text-secondary_font_color">
                           Yes
@@ -472,6 +487,7 @@ const Registrtion = () => {
                           id="subribeNo"
                           name="subribeNo"
                           onChange={handleUserInput}
+                          value={userInfo.subribeNo}
                         />
                         <p className="font-DMsans text-base font-normal text-secondary_font_color">
                           No
