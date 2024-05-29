@@ -8,6 +8,7 @@ const SignUpInput = ({
   labeTitle,
   inputId,
   oninputChange,
+  value,
 }) => {
   return (
     <>
@@ -26,6 +27,7 @@ const SignUpInput = ({
             name={inputId}
             placeholder={placeHolder}
             onChange={oninputChange}
+            value={value}
           />
         </Flex>
       </div>

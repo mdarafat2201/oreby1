@@ -8,7 +8,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast, Bounce } from "react-toastify";
 const Registrtion = () => {
   const auth = getAuth();
-
+  const [loading, setloading] = useState(false);
   const [userInfo, setuserInfo] = useState({
     FirstName: "",
     LastName: "",
@@ -159,7 +159,25 @@ const Registrtion = () => {
         Passwordnotmatchd: "",
         agreementError: "",
       });
+      setuserInfo({
+        FirstName: "",
+        LastName: "",
+        Email: "",
+        Telephone: "",
+        Address1: "",
+        Address2: "",
+        City: "",
+        PostCode: "",
+        Divison: "",
+        District: "",
+        Password: "",
+        RepeatPassword: "",
+        agreement: false,
+        subribeYes: false,
+        subribeNo: false,
+      });
       //crete user with firebase createUserWithEmailAndPassword
+      setloading(true);
       createUserWithEmailAndPassword(auth, userInfo.Email, userInfo.Password)
         .then((usercredential) => {
           toast(`${userInfo.FirstName} registrtion don`, {
@@ -186,6 +204,9 @@ const Registrtion = () => {
             theme: "light",
             transition: Bounce,
           });
+        })
+        .finally(() => {
+          setloading(false);
         });
     }
   };
@@ -495,14 +516,33 @@ const Registrtion = () => {
                       </Flex>
                     </Flex>
                   </div>
-                  <div onClick={handleSignup}>
-                    <Button
-                      title={"Log in"}
+                  {loading ? (
+                    <div
                       className={
-                        "rounded-sm bg-main_font_color px-16 py-4 font-DMsans text-base font-bold text-main_bg_color"
+                        " w-[180px] rounded-sm bg-main_font_color px-9 py-4 "
                       }
-                    />
-                  </div>
+                    >
+                      <Flex className={"items-center gap-x-2"}>
+                        <div className="pointer-events-none h-5 w-5 animate-spin  rounded-full border-4 border-t-green-500"></div>
+                        <p
+                          className={
+                            " font-DMsans text-base font-bold text-main_bg_color"
+                          }
+                        >
+                          Sign up....
+                        </p>
+                      </Flex>
+                    </div>
+                  ) : (
+                    <div onClick={handleSignup}>
+                      <Button
+                        title={"Sign up"}
+                        className={
+                          "rounded-sm bg-main_font_color px-16 py-4 font-DMsans text-base font-bold text-main_bg_color"
+                        }
+                      />
+                    </div>
+                  )}
                 </Flex>
               </div>
               {/** chek infomation */}
