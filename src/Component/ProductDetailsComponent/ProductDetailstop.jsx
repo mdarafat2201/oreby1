@@ -6,10 +6,7 @@ const ProductDetailstop = ({ EachProductAllImg }) => {
       <div className="mt-10">
         <Flex className={" flex-wrap items-center justify-between gap-y-10"}>
           {EachProductAllImg.images?.slice(0, 4).map((img) => (
-            <div
-              className="h-[450px] max-w-[48%] rounded-lg  shadow-lg"
-              key={img}
-            >
+            <div className="h-[450px] w-[48%] rounded-lg  shadow-lg" key={img}>
               <picture>
                 <img
                   src={img}

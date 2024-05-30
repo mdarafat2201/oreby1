@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import Firebaseapp from "../Firebase/FirebaseConfig.js";
+
 import { store } from "./Redux/Store/Store.js";
 import { Provider } from "react-redux";
 

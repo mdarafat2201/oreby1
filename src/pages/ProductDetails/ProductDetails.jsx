@@ -8,11 +8,16 @@ import Loading from "../../Component/CommonConponent/Loading";
 import Flex from "../../Component/CommonConponent/Flex";
 import RatingStar from "../../Component/ProductDetailsComponent/RatingStar";
 import ProductInfo from "../../Component/ProductDetailsComponent/ProductInfo";
+import { addtoCart } from "../../Redux/AllSlice/AddtoCart/AddtoCart";
+import { useParams } from "react-router-dom";
+
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const [EachProduct, setEachProduct] = useState({});
+  const { productId } = useParams();
+  console.log(productId);
   useEffect(() => {
-    dispatch(FetcherProduct("https://dummyjson.com/products/1"));
+    dispatch(FetcherProduct(`https://dummyjson.com/products/${productId}`));
   }, []);
   const { data, status } = useSelector((state) => state.product);
 
@@ -21,6 +26,9 @@ const ProductDetails = () => {
       setEachProduct(data.payload);
     }
   }, [status.payload, data.payload]);
+  const HandleCart = () => {
+    dispatch(addtoCart(EachProduct));
+  };
 
   return (
     <>
@@ -66,7 +74,10 @@ const ProductDetails = () => {
               </div>
             </div>
             <div>
-              <ProductInfo ProductStock={EachProduct.stock} />
+              <ProductInfo
+                ProductStock={EachProduct.stock}
+                onAddtoCart={HandleCart}
+              />
             </div>
           </div>
         </div>

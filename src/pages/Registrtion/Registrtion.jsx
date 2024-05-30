@@ -6,6 +6,8 @@ import { useState } from "react";
 import Button from "../../Component/CommonConponent/Button";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast, Bounce } from "react-toastify";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../../Firebase/FirebaseConfig";
 const Registrtion = () => {
   const auth = getAuth();
   const [loading, setloading] = useState(false);
@@ -147,35 +149,6 @@ const Registrtion = () => {
         agreementError: "agreement missing",
       });
     } else {
-      setuserInfoError({
-        ...userInfoError,
-        FirstNameError: "",
-        EmailError: "",
-        TelephoneError: "",
-        DistrictError: "",
-        Address1Error: "",
-        PasswordError: "",
-        RepeatPasswordError: "",
-        Passwordnotmatchd: "",
-        agreementError: "",
-      });
-      setuserInfo({
-        FirstName: "",
-        LastName: "",
-        Email: "",
-        Telephone: "",
-        Address1: "",
-        Address2: "",
-        City: "",
-        PostCode: "",
-        Divison: "",
-        District: "",
-        Password: "",
-        RepeatPassword: "",
-        agreement: false,
-        subribeYes: false,
-        subribeNo: false,
-      });
       //crete user with firebase createUserWithEmailAndPassword
       setloading(true);
       createUserWithEmailAndPassword(auth, userInfo.Email, userInfo.Password)
@@ -192,6 +165,15 @@ const Registrtion = () => {
             transition: Bounce,
           });
         })
+        .then(() => {
+          addDoc(collection(db, "users/"), userInfo)
+            .then((userCrend) => {
+              console.log(userCrend);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
         .catch((erro) => {
           toast.error(`${erro.code}`, {
             position: "top-center",
@@ -207,6 +189,35 @@ const Registrtion = () => {
         })
         .finally(() => {
           setloading(false);
+          setuserInfoError({
+            ...userInfoError,
+            FirstNameError: "",
+            EmailError: "",
+            TelephoneError: "",
+            DistrictError: "",
+            Address1Error: "",
+            PasswordError: "",
+            RepeatPasswordError: "",
+            Passwordnotmatchd: "",
+            agreementError: "",
+          });
+          setuserInfo({
+            FirstName: "",
+            LastName: "",
+            Email: "",
+            Telephone: "",
+            Address1: "",
+            Address2: "",
+            City: "",
+            PostCode: "",
+            Divison: "",
+            District: "",
+            Password: "",
+            RepeatPassword: "",
+            agreement: false,
+            subribeYes: false,
+            subribeNo: false,
+          });
         });
     }
   };

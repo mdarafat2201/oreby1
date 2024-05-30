@@ -5,7 +5,7 @@ import Button from "../CommonConponent/Button";
 import ProductDescibtion from "../CommonConponent/ProductDescibtion/ProductDescibtion";
 import Reviews from "../CommonConponent/ProductDescibtion/Reviews";
 
-const ProductInfo = ({ ProductStock }) => {
+const ProductInfo = ({ ProductStock, onAddtoCart }) => {
   const colorItem = [
     { id: 1, colorcode: "#979797" },
     { id: 2, colorcode: "#ff8686" },
@@ -103,18 +103,23 @@ const ProductInfo = ({ ProductStock }) => {
           {/**wishlity and add to cart buttons */}
           <div>
             <Flex className={"items-center gap-x-5"}>
-              <Button
-                title={"Add to Wish List"}
-                className={
-                  "rounded border-2 border-main_font_color px-12 py-4 font-DMsans font-bold text-main_font_color "
-                }
-              />
-              <Button
-                title={"Add to Cart"}
-                className={
-                  "rounded border-2 border-main_font_color bg-main_font_color px-14 py-4 font-DMsans font-bold text-main_bg_color "
-                }
-              />
+              <div>
+                <Button
+                  title={"Add to Wish List"}
+                  className={
+                    "rounded border-2 border-main_font_color px-12 py-4 font-DMsans font-bold text-main_font_color "
+                  }
+                />
+              </div>
+
+              <div onClick={onAddtoCart}>
+                <Button
+                  title={"Add to Cart"}
+                  className={
+                    "rounded border-2 border-main_font_color bg-main_font_color px-14 py-4 font-DMsans font-bold text-main_bg_color "
+                  }
+                />
+              </div>
             </Flex>
           </div>
           {/**wishlity and add to cart buttons */}
