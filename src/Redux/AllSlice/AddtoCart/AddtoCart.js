@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Bounce, toast } from "react-toastify";
 
 const initialState = {
   CartItem: [],
@@ -11,7 +12,37 @@ export const AddtoCartSlice = createSlice({
   initialState,
   reducers: {
     addtoCart: (state, action) => {
-      state.CartItem.push({ ...action.payload, cartQuantity: 1 });
+      const findIndex = state.CartItem.findIndex((item) => {
+        return item.id === action.payload.id;
+      });
+      if (findIndex >= 0) {
+        state.CartItem[findIndex].cartQuantity += 1;
+        toast.info(`${action.payload.title} again Add to cort`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      } else {
+        const temporary = { ...action.payload, cartQuantity: 1 };
+        state.CartItem.push(temporary);
+        toast(`${action.payload.title} Add to cort`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      }
     },
   },
 });

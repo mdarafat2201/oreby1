@@ -15,7 +15,7 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const [EachProduct, setEachProduct] = useState({});
   const { productId } = useParams();
-  console.log(productId);
+
   useEffect(() => {
     dispatch(FetcherProduct(`https://dummyjson.com/products/${productId}`));
   }, []);
