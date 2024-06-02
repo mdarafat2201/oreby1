@@ -9,12 +9,13 @@ import Flex from "../../Component/CommonConponent/Flex";
 import RatingStar from "../../Component/ProductDetailsComponent/RatingStar";
 import ProductInfo from "../../Component/ProductDetailsComponent/ProductInfo";
 import { addtoCart } from "../../Redux/AllSlice/AddtoCart/AddtoCart";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const [EachProduct, setEachProduct] = useState({});
   const { productId } = useParams();
+  const Navigate = useNavigate();
 
   useEffect(() => {
     dispatch(FetcherProduct(`https://dummyjson.com/products/${productId}`));
@@ -28,6 +29,7 @@ const ProductDetails = () => {
   }, [status.payload, data.payload]);
   const HandleCart = () => {
     dispatch(addtoCart(EachProduct));
+    Navigate("/Cart");
   };
 
   return (
