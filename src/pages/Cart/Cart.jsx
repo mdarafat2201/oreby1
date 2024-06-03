@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import BreadCrumb from "../../Component/CommonConponent/BreadCrumb/BreadCrumb";
 import Flex from "../../Component/CommonConponent/Flex";
-import product3 from "../../assets/product3.png";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { ImCancelCircle } from "react-icons/im";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { RemoveCartItem } from "../../Redux/AllSlice/AddtoCart/AddtoCart";
 const Cart = () => {
+  const Dispatch = useDispatch();
   const { CartItem } = useSelector((state) => state.Cart);
 
+  /**
+   * todo: handleRemove funtionlity
+   * @params ({item})
+   */
+
+  const handleRemove = (item) => {
+    Dispatch(RemoveCartItem(item));
+  };
   return (
     <>
       <div className=" py-24">
@@ -44,13 +53,16 @@ const Cart = () => {
               </div>
             </Flex>
           </div>
-          <div className=" scrollbar-thumb-main_font_color scrollbar-track-secondary_bg_color scrollbar-thin h-[500px] overflow-y-scroll">
+          <div className=" h-[500px] overflow-y-scroll scrollbar-thin scrollbar-track-secondary_bg_color scrollbar-thumb-main_font_color">
             {CartItem?.map((item) => (
               <div className="py-5">
                 <Flex className={"items-center justify-between"}>
                   <div className="grow basis-1/3">
                     <Flex className={" items-center gap-x-5"}>
-                      <span className="cursor-pointer text-2xl">
+                      <span
+                        className="cursor-pointer text-2xl"
+                        onClick={() => handleRemove(item)}
+                      >
                         <ImCancelCircle />
                       </span>
                       <div className="h-20 w-20 rounded-md shadow-xl">

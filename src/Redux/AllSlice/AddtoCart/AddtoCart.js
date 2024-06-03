@@ -48,8 +48,15 @@ export const AddtoCartSlice = createSlice({
         });
       }
     },
+    RemoveCartItem: (state, action) => {
+      const removeitem = state.CartItem.filter(
+        (item) => item.id !== action.payload.id,
+      );
+      state.CartItem = removeitem;
+      localStorage.setItem("cartItem", JSON.stringify(state.CartItem));
+    },
   },
 });
 
-export const { addtoCart } = AddtoCartSlice.actions;
+export const { addtoCart, RemoveCartItem } = AddtoCartSlice.actions;
 export default AddtoCartSlice.reducer;
