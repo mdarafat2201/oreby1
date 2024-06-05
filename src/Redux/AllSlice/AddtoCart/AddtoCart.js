@@ -54,9 +54,85 @@ export const AddtoCartSlice = createSlice({
       );
       state.CartItem = removeitem;
       localStorage.setItem("cartItem", JSON.stringify(state.CartItem));
+      toast.error(`${action.payload.title} remove to cort`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    },
+    ProductIncrement: (state, action) => {
+      const findIndex = state.CartItem.findIndex(
+        (item) => item.id === action.payload.id,
+      );
+      if (findIndex >= 0) {
+        state.CartItem[findIndex].cartQuantity += 1;
+        localStorage.setItem("cartItem", JSON.stringify(state.CartItem));
+        toast.success(`${action.payload.title} cartQuantity to cort`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      }
+    },
+    ProductDecrement: (state, action) => {
+      const findIndex = state.CartItem.findIndex(
+        (item) => item.id === action.payload.id,
+      );
+      if (state.CartItem[findIndex].cartQuantity > 1) {
+        state.CartItem[findIndex].cartQuantity -= 1;
+        localStorage.setItem("cartItem", JSON.stringify(state.CartItem));
+        toast.error(`${action.payload.title} cartQuantity delit cort`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      }
+    },
+    getTotal: (state, action) => {
+      const totalCart = state.CartItem.reduce(
+        (totalCart, cartITem) => {
+          console.log(cartITem);
+          const { price, cartQuantity } = cartITem;
+          const totalproductprice = cartQuantity * price;
+          console.log(totalproductprice);
+          totalCart.totalAmount += Math.round(totalproductprice);
+          totalCart.totalItem += cartQuantity;
+          return totalCart;
+        },
+        {
+          totalAmount: 0,
+          totalItem: 0,
+        },
+      );
+      state.totoalCartItem = totalCart.totalItem;
+      state.TotalAmount = totalCart.totalAmount;
     },
   },
 });
 
-export const { addtoCart, RemoveCartItem } = AddtoCartSlice.actions;
+export const {
+  addtoCart,
+  getTotal,
+  RemoveCartItem,
+  ProductIncrement,
+  ProductDecrement,
+} = AddtoCartSlice.actions;
 export default AddtoCartSlice.reducer;
