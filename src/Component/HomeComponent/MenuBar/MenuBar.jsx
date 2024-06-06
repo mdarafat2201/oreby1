@@ -5,15 +5,17 @@ import { HiMiniBars3BottomLeft } from "react-icons/hi2";
 import Serach from "../../CommonConponent/Serach";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import CartItem from "../../../assets/product4.png";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getTotal } from "../../../Redux/AllSlice/AddtoCart/AddtoCart";
 const MenuBar = () => {
   const [ShowCatagorise, setShowCatagorise] = useState(false);
   const [ShowAccount, setShowAccount] = useState(false);
   const [Cart, setCart] = useState(false);
   const MenuRef = useRef();
-
+  const navigate = useNavigate();
+  const Dispatch = useDispatch();
   //HandleCatagory function implement
   const HandleCatagory = () => {
     setCart(false);
@@ -44,21 +46,32 @@ const MenuBar = () => {
       }
     });
   }, []);
+
+  /**
+   * todo : take all product  from redux
+   */
+
+  const { CartItem, totoalCartItem, TotalAmount } = useSelector(
+    (state) => state.Cart,
+  );
+  useEffect(() => {
+    Dispatch(getTotal());
+  }, [CartItem]);
   return (
     <>
-      <div className="bg-secondary_bg_color py-5 px-5" ref={MenuRef}>
+      <div className="bg-secondary_bg_color px-5 py-5" ref={MenuRef}>
         <div className="container">
-          <Flex className={"gap-x-3 justify-between items-center"}>
+          <Flex className={"items-center justify-between gap-x-3"}>
             <Flex className="relative ">
               <div onClick={HandleCatagory}>
                 <HiMiniBars3BottomLeft
-                  className={`text-2xl cursor-pointer ${
+                  className={`cursor-pointer text-2xl ${
                     ShowCatagorise === true ? "text-green-400" : null
                   }`}
                 />
               </div>
               <div className="ml-3">
-                <p className="menuItem  cursor-pointer text-main_font_color hidden sm:block">
+                <p className="menuItem  hidden cursor-pointer text-main_font_color sm:block">
                   Shop by Category
                 </p>
               </div>
@@ -66,7 +79,7 @@ const MenuBar = () => {
               {ShowCatagorise && (
                 <div>
                   <ul
-                    className={`bg-main_font_color text-white   py-4 absolute z-10 divide-y divide-[#ffffff3f] w-[100vw] sm:w-[30vw]  left-[-20px] sm:left-[4px]  top-[250%]
+                    className={`absolute left-[-20px]   top-[250%] z-10 w-[100vw] divide-y divide-[#ffffff3f] bg-main_font_color py-4  text-white sm:left-[4px]  sm:w-[30vw]
                      
                     `}
                   >
@@ -98,7 +111,7 @@ const MenuBar = () => {
               <div className="relative">
                 <div onClick={HandleAccount}>
                   <Flex
-                    className={"gap-x-1 text-center sm:gap-x-2 cursor-pointer "}
+                    className={"cursor-pointer gap-x-1 text-center sm:gap-x-2 "}
                   >
                     <div>
                       <FaUser
@@ -118,7 +131,7 @@ const MenuBar = () => {
                   <div>
                     <ul
                       className={
-                        "w-[100vw] sm:w-[200px] right-[-44px] sm:right-[1px] top-14  z-10 bg-main_font_color absolute  text-center text-main_bg_color py-2 divide-y divide-[#ffffff3f]"
+                        "absolute right-[-44px] top-14 z-10 w-[100vw]  divide-y divide-[#ffffff3f] bg-main_font_color  py-2 text-center text-main_bg_color sm:right-[1px] sm:w-[200px]"
                       }
                     >
                       <li className="p-4">
@@ -135,42 +148,52 @@ const MenuBar = () => {
                 <div className=" cursor-pointer" onClick={HandleCart}>
                   <FaShoppingCart className={`${Cart && "text-green-500"}`} />
                 </div>
+                <div className=" absolute right-[-22px] top-[-22px] flex h-7 w-7  items-center justify-center rounded-full bg-green-500 text-red-500">
+                  <span>{totoalCartItem}</span>
+                </div>
 
                 {Cart && (
                   <div
-                    className={`text-main_bg_color right-[-35px] sm:right-0 absolute top-14 z-10  w-[100vw] sm:w-[55vw] lg:w-[30vw]
+                    className={`absolute right-[-35px] top-14 z-10 w-[100vw] text-main_bg_color  sm:right-0 sm:w-[55vw] lg:w-[30vw]
                     
                   `}
                   >
-                    <Flex
-                      className={"items-center justify-around p-4 bg-[#F5F5F3]"}
-                    >
-                      <div className="w-[80px] h-[80px] object-cover border-2 border-main_font_color ">
-                        <img src={CartItem} alt={CartItem} />
-                      </div>
-                      <div className="text-main_font_color font-DMsans  font-bold font-sm  ">
-                        <h2>Black Smart Watch</h2>
-                        <span>$44.0</span>
-                      </div>
-                      <div
-                        className={`text-main_font_color `}
-                        onClick={HandleCart}
-                      >
-                        <RxCross2 />
-                      </div>
-                    </Flex>
+                    <div className="h-[50vh] overflow-y-scroll scrollbar-thin scrollbar-track-secondary_bg_color scrollbar-thumb-main_font_color">
+                      {CartItem?.map((item) => (
+                        <Flex
+                          className={
+                            "items-center justify-around bg-[#F5F5F3] p-4"
+                          }
+                        >
+                          <div className="h-[80px] w-[80px] border-2 border-main_font_color object-cover ">
+                            <img src={item.thumbnail} alt={item.thumbnail} />
+                          </div>
+                          <div className="font-sm font-DMsans  font-bold text-main_font_color  ">
+                            <h2>{item.title.slice(0, 10)}...</h2>
+                            <span>${item.price}</span>
+                          </div>
+                          <div
+                            className={`text-main_font_color `}
+                            onClick={HandleCart}
+                          >
+                            <RxCross2 />
+                          </div>
+                        </Flex>
+                      ))}
+                    </div>
+
                     <div className="bg-main_bg_color p-4">
-                      <h2 className="text-secondary_font_color font-DMsans font-normal text-md ml-8">
+                      <h2 className="text-md ml-8 font-DMsans font-normal text-secondary_font_color">
                         Subtotal:
-                        <span className="text-main_font_color font-bold ml-1">
-                          $44.00
+                        <span className="ml-1 font-bold text-main_font_color">
+                          ${TotalAmount}
                         </span>
                       </h2>
                       <Flex className={"justify-around py-5"}>
-                        <div>
+                        <div onClick={() => navigate("/Cart")}>
                           <Button
                             className={
-                              "py-4 px-4 font-DMsans  font-bold font-sm  text-main_font_color border-2 border-main_font_color "
+                              "font-sm border-2 border-main_font_color  px-4 py-4  font-DMsans font-bold text-main_font_color "
                             }
                             title={"View Cart"}
                           />
@@ -178,7 +201,7 @@ const MenuBar = () => {
                         <div>
                           <Button
                             className={
-                              "py-4 px-4 bg-main_font_color text-main_bg_color font-DMsans  font-bold font-sm  "
+                              "font-sm bg-main_font_color px-4 py-4 font-DMsans  font-bold text-main_bg_color  "
                             }
                             title={"Checkout"}
                           />

@@ -29,7 +29,6 @@ const ProductDetails = () => {
   }, [status.payload, data.payload]);
   const HandleCart = () => {
     dispatch(addtoCart(EachProduct));
-    Navigate("/Cart");
   };
 
   return (

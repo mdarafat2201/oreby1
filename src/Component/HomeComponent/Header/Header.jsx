@@ -32,8 +32,14 @@ const Header = () => {
               >
                 <li>
                   <NavLink
-                    index
-                    className="menuItem transition-all hover:font-bold hover:text-main_font_color"
+                    to={"/"}
+                    className={({ isActive, ispending }) =>
+                      ispending
+                        ? "menuItem transition-all hover:font-bold hover:text-main_font_color"
+                        : isActive
+                          ? "menuItem text-green-400 transition-all"
+                          : ""
+                    }
                   >
                     Home
                   </NavLink>
@@ -41,34 +47,58 @@ const Header = () => {
                 <li>
                   <NavLink
                     to={"/shop"}
-                    className="menuItem transition-all hover:font-bold hover:text-main_font_color"
+                    className={({ isActive, ispending }) =>
+                      ispending
+                        ? "menuItem transition-all hover:font-bold hover:text-main_font_color"
+                        : isActive
+                          ? "menuItem text-green-400 transition-all"
+                          : ""
+                    }
                   >
                     Shop
                   </NavLink>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="menuItem transition-all hover:font-bold hover:text-main_font_color"
+                  <NavLink
+                    to={"/About"}
+                    className={({ isActive, ispending }) =>
+                      ispending
+                        ? "menuItem transition-all hover:font-bold hover:text-main_font_color"
+                        : isActive
+                          ? "menuItem text-green-400 transition-all"
+                          : ""
+                    }
                   >
                     About
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="menuItem transition-all hover:font-bold hover:text-main_font_color"
+                  <NavLink
+                    to={"/Contacts"}
+                    className={({ isActive, ispending }) =>
+                      ispending
+                        ? "menuItem transition-all hover:font-bold hover:text-main_font_color"
+                        : isActive
+                          ? "menuItem text-green-400 transition-all"
+                          : ""
+                    }
                   >
                     Contacts
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="menuItem transition-all hover:font-bold hover:text-main_font_color"
+                  <NavLink
+                    to={"/Journal"}
+                    className={({ isActive, ispending }) =>
+                      ispending
+                        ? "menuItem transition-all hover:font-bold hover:text-main_font_color"
+                        : isActive
+                          ? "menuItem text-green-400 transition-all"
+                          : ""
+                    }
                   >
                     Journal
-                  </a>
+                  </NavLink>
                 </li>
               </Flex>
             </div>
