@@ -74,7 +74,7 @@ const Header = () => {
                 </li>
                 <li>
                   <NavLink
-                    to={"/Contacts"}
+                    to={"/contact"}
                     className={({ isActive, ispending }) =>
                       ispending
                         ? "menuItem transition-all hover:font-bold hover:text-main_font_color"
