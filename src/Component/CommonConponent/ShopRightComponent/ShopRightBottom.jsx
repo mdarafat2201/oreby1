@@ -6,8 +6,9 @@ import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 import { ShopRightPagecontext } from "../../ShopComponent/ShopRight/ShopRight";
 import { FetcherProduct } from "../../../Redux/AllSlice/ProductSlice/ProductSlice.js";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+
 import Loading from "../Loading.jsx";
+import { addtoCart } from "../../../Redux/AllSlice/AddtoCart/AddtoCart.js";
 
 const ShopRightBottom = () => {
   const dispatch = useDispatch();
@@ -27,17 +28,6 @@ const ShopRightBottom = () => {
     }
   }, [status.payload, data.payload]);
 
-  // useEffect(() => {
-  //   const ProudtDataFetcher = async () => {
-  //     const products = await axios.get("https://dummyjson.com/products");
-  //     setallProducts(products.data.products);
-
-  //     // set data on redux
-  //     dispatch(SetProduts(products.data.products));
-  //   };
-  //   ProudtDataFetcher();
-  // }, []);
-
   //HandlePagination function implementaion
   const HandlePagination = (pageNumber) => {
     if (
@@ -47,7 +37,11 @@ const ShopRightBottom = () => {
       setpage(pageNumber);
     }
   };
+  //HandleAddcart function implementaion
 
+  const HandleAddcart = (item) => {
+    dispatch(addtoCart(item));
+  };
   return (
     <>
       <div className="mt-8">
@@ -70,33 +64,31 @@ const ShopRightBottom = () => {
                       className={`  ${GridLayout ? "w-full" : "w-full sm:w-[48%] lg:w-[33%]"}`}
                       key={productItem.id}
                     >
-                      <Link to={`/Product-Details/${productItem.id}`}>
-                        <Card
-                          img={productItem.thumbnail}
-                          productTitle={productItem.title}
-                          colorVariant={"Balck"}
-                          price={
-                            productItem.price -
-                              productItem.discountPercentage >=
-                            Math.floor(
-                              productItem.price -
-                                productItem.discountPercentage,
-                            )
-                              ? `${Math.floor(productItem.price - productItem.discountPercentage)}.50`
-                              : `${Math.floor(productItem.price - productItem.discountPercentage)}`
-                          }
-                          badge={
-                            <Button
-                              className={"bg-black px-8 py-[7px] text-white"}
-                              title={
-                                productItem.discountPercentage
-                                  ? `$${productItem.discountPercentage}`
-                                  : "new"
-                              }
-                            />
-                          }
-                        />
-                      </Link>
+                      <Card
+                        onAddtocart={() => HandleAddcart(productItem)}
+                        productItemId={productItem.id}
+                        img={productItem.thumbnail}
+                        productTitle={productItem.title}
+                        colorVariant={"Balck"}
+                        price={
+                          productItem.price - productItem.discountPercentage >=
+                          Math.floor(
+                            productItem.price - productItem.discountPercentage,
+                          )
+                            ? `${Math.floor(productItem.price - productItem.discountPercentage)}.50`
+                            : `${Math.floor(productItem.price - productItem.discountPercentage)}`
+                        }
+                        badge={
+                          <Button
+                            className={"bg-black px-8 py-[7px] text-white"}
+                            title={
+                              productItem.discountPercentage
+                                ? `$${productItem.discountPercentage}`
+                                : "new"
+                            }
+                          />
+                        }
+                      />
                     </div>
                   ))}
               </Flex>

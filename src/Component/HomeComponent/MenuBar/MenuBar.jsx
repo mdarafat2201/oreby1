@@ -8,12 +8,19 @@ import { RxCross2 } from "react-icons/rx";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getTotal } from "../../../Redux/AllSlice/AddtoCart/AddtoCart";
+import {
+  RemoveCartItem,
+  getTotal,
+} from "../../../Redux/AllSlice/AddtoCart/AddtoCart";
+
 const MenuBar = () => {
+  const dispatch = useDispatch();
   const [ShowCatagorise, setShowCatagorise] = useState(false);
   const [ShowAccount, setShowAccount] = useState(false);
   const [Cart, setCart] = useState(false);
   const MenuRef = useRef();
+  const CartRef = useRef();
+
   const navigate = useNavigate();
   const Dispatch = useDispatch();
   //HandleCatagory function implement
@@ -34,6 +41,13 @@ const MenuBar = () => {
     setShowAccount(false);
     setCart(!Cart);
   };
+  /**
+   * todo: HandleCartItem funtionlity
+   * @params ({item})
+   */
+  const HandleCartItem = (item) => {
+    dispatch(RemoveCartItem(item));
+  };
 
   //Menu Ref funtionlity
 
@@ -43,9 +57,13 @@ const MenuBar = () => {
         setShowCatagorise(false);
         setShowAccount(false);
         setCart(false);
+      } else if (!CartRef.current.contains(e.target)) {
+        setCart(true);
       }
     });
   }, []);
+
+  //Menu Ref funtionlity
 
   /**
    * todo : take all product  from redux
@@ -57,6 +75,7 @@ const MenuBar = () => {
   useEffect(() => {
     Dispatch(getTotal());
   }, [CartItem]);
+
   return (
     <>
       <div className="bg-secondary_bg_color px-5 py-5" ref={MenuRef}>
@@ -154,9 +173,10 @@ const MenuBar = () => {
 
                 {Cart && (
                   <div
-                    className={`absolute right-[-35px] top-14 z-10 w-[100vw] text-main_bg_color  sm:right-0 sm:w-[55vw] lg:w-[30vw]
+                    className={`product absolute right-[-35px] top-14 z-10 w-[100vw] text-main_bg_color  sm:right-0 sm:w-[55vw] lg:w-[30vw]
                     
                   `}
+                    ref={CartRef}
                   >
                     <div className="h-[50vh] overflow-y-scroll scrollbar-thin scrollbar-track-secondary_bg_color scrollbar-thumb-main_font_color">
                       {CartItem?.map((item) => (
@@ -169,12 +189,12 @@ const MenuBar = () => {
                             <img src={item.thumbnail} alt={item.thumbnail} />
                           </div>
                           <div className="font-sm font-DMsans  font-bold text-main_font_color  ">
-                            <h2>{item.title.slice(0, 10)}...</h2>
+                            <h2>{item.title}...</h2>
                             <span>${item.price}</span>
                           </div>
                           <div
-                            className={`text-main_font_color `}
-                            onClick={HandleCart}
+                            className={`cursor-pointer text-main_font_color `}
+                            onClick={() => HandleCartItem(item)}
                           >
                             <RxCross2 />
                           </div>

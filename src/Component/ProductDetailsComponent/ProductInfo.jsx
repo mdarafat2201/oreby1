@@ -5,7 +5,7 @@ import Button from "../CommonConponent/Button";
 import ProductDescibtion from "../CommonConponent/ProductDescibtion/ProductDescibtion";
 import Reviews from "../CommonConponent/ProductDescibtion/Reviews";
 
-const ProductInfo = ({ ProductStock, onAddtoCart }) => {
+const ProductInfo = ({ ProductStock, onAddtoCart, onIncement }) => {
   const colorItem = [
     { id: 1, colorcode: "#979797" },
     { id: 2, colorcode: "#ff8686" },

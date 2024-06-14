@@ -2,37 +2,47 @@ import React from "react";
 import productImg from "../../assets/product10.png";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { TbReload } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
-const Card = ({ colorVariant, badge, img, productTitle, price }) => {
+const Card = ({
+  colorVariant,
+  badge,
+  img,
+  productTitle,
+  price,
+  productItemId,
+  onAddtocart,
+}) => {
   return (
     <>
-      <div className="cursor-pointer px-4   w-full">
+      <div className="w-full cursor-pointer   px-4">
         <div className="group relative overflow-hidden">
-          <div className="absolute top-5 left-5 text-black">{badge}</div>
-
-          <img
-            src={img ? img : productImg}
-            alt={img}
-            className="w-full h-[290px] object-cover"
-          />
+          <div className="absolute left-5 top-5 text-black">{badge}</div>
+          <Link to={`/Product-Details/${productItemId}`}>
+            <img
+              src={img ? img : productImg}
+              alt={img}
+              className="h-[290px] w-full object-cover"
+            />
+          </Link>
 
           {/* =================Overlay================= */}
 
-          <div className="py-6 px-7 flex flex-col items-end absolute -bottom-36 left-0 bg-white w-full gap-y-5 group-hover:bottom-0 transition-all">
+          <div className="absolute -bottom-36 left-0 flex w-full flex-col items-end gap-y-5 bg-white px-7 py-6 transition-all group-hover:bottom-0">
             <div className="flex items-center gap-x-4">
-              <h5 className="text-[#767676] font-DMsans hover:text-[#262626] hover:font-bold transition-all">
+              <h5 className="font-DMsans text-[#767676] transition-all hover:font-bold hover:text-[#262626]">
                 Add to List
               </h5>
               <FaHeart />
             </div>
             <div className="flex items-center gap-x-4">
-              <h5 className="text-[#767676] font-normal hover:text-[#262626] hover:font-bold transition-all">
+              <h5 className="font-normal text-[#767676] transition-all hover:font-bold hover:text-[#262626]">
                 Compare
               </h5>
               <TbReload />
             </div>
-            <div className="flex items-center gap-x-4">
-              <h5 className="text-[#767676] font-normal hover:text-[#262626] hover:font-bold transition-all">
+            <div className="flex items-center gap-x-4" onClick={onAddtocart}>
+              <h5 className="font-normal text-[#767676] transition-all hover:font-bold hover:text-[#262626]">
                 Add to Cart
               </h5>
               <FaShoppingCart />
@@ -42,16 +52,16 @@ const Card = ({ colorVariant, badge, img, productTitle, price }) => {
           {/* =================Overlay================= */}
         </div>
 
-        <div className="flex justify-between items-center pt-6">
-          <h3 className=" font-DMsans  font-bold text-xl">
+        <div className="flex items-center justify-between pt-6">
+          <h3 className=" font-DMsans  text-xl font-bold">
             {productTitle ? productTitle : "Basic Crew Neck Tee"}
           </h3>
-          <p className="text-base font-DMsans font-normal text-thirdFontColor">
+          <p className="text-thirdFontColor font-DMsans text-base font-normal">
             {price ? `$${price}` : "$44.00"}
           </p>
         </div>
 
-        <span className="text-thirdFontColor font-DMsans font-normal text-base pt-3">
+        <span className="text-thirdFontColor pt-3 font-DMsans text-base font-normal">
           {colorVariant ? colorVariant : "Black"}
         </span>
       </div>

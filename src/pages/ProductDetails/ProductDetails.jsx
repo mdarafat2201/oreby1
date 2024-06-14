@@ -8,7 +8,10 @@ import Loading from "../../Component/CommonConponent/Loading";
 import Flex from "../../Component/CommonConponent/Flex";
 import RatingStar from "../../Component/ProductDetailsComponent/RatingStar";
 import ProductInfo from "../../Component/ProductDetailsComponent/ProductInfo";
-import { addtoCart } from "../../Redux/AllSlice/AddtoCart/AddtoCart";
+import {
+  addtoCart,
+  ProductIncrement,
+} from "../../Redux/AllSlice/AddtoCart/AddtoCart";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ProductDetails = () => {
@@ -30,7 +33,11 @@ const ProductDetails = () => {
   const HandleCart = () => {
     dispatch(addtoCart(EachProduct));
   };
-
+  console.log(EachProduct);
+  //HandleIncement funtion
+  // const HandleIncement = (item) => {
+  //   dispatch(ProductIncrement(item));
+  // };
   return (
     <>
       <div className="mb-10 mt-3">
@@ -77,6 +84,7 @@ const ProductDetails = () => {
             <div>
               <ProductInfo
                 ProductStock={EachProduct.stock}
+                //onIncement={() => HandleIncement(EachProduct)}
                 onAddtoCart={HandleCart}
               />
             </div>
