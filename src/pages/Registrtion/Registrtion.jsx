@@ -4,11 +4,18 @@ import SignUpInput from "../../Component/RegistrtionComponent/SignUpInput/SignUp
 import Flex from "../../Component/CommonConponent/Flex";
 import { useState } from "react";
 import Button from "../../Component/CommonConponent/Button";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { toast, Bounce } from "react-toastify";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../Firebase/FirebaseConfig";
+import { Link, useNavigate } from "react-router-dom";
+import { Divison, District } from "../../../NewArrivalData/ArrivalData";
 const Registrtion = () => {
+  const Navigate = useNavigate();
   const auth = getAuth();
   const [loading, setloading] = useState(false);
   const [userInfo, setuserInfo] = useState({
@@ -168,7 +175,19 @@ const Registrtion = () => {
         .then(() => {
           addDoc(collection(db, "users/"), userInfo)
             .then((userCrend) => {
-              console.log(userCrend);
+              sendEmailVerification(auth.currentUser).then(() => {
+                toast(`${userInfo.FirstName} chek your email inbox`, {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  transition: Bounce,
+                });
+              });
             })
             .catch((err) => {
               console.log(err);
@@ -218,6 +237,7 @@ const Registrtion = () => {
             subribeYes: false,
             subribeNo: false,
           });
+          Navigate("/Login");
         });
     }
   };
@@ -390,8 +410,11 @@ const Registrtion = () => {
                           value={userInfo.Divison}
                         >
                           <option value={"Pleaseselect"}>Please select</option>
-                          <option value={"dhaka"}>dhaka</option>
-                          <option value={"mymensing"}>mymensing</option>
+                          {Divison?.map((item) => (
+                            <option value={item.DivisonItem}>
+                              {item.DivisonItem}
+                            </option>
+                          ))}
                         </select>
                       </div>
                       <div className="w-[36%]">
@@ -406,7 +429,12 @@ const Registrtion = () => {
                           value={userInfo.District}
                         >
                           <option value={"Pleaseselect"}>Please select</option>
-                          <option value={"dhaka"}>dhaka</option>
+                          {District?.map((item) => (
+                            <option value={item.DistrictItem}>
+                              {item.DistrictItem}
+                            </option>
+                          ))}
+
                           <option value={"mymensing"}>mymensing</option>
                         </select>
                         {userInfoError.DistrictError && (
@@ -495,6 +523,13 @@ const Registrtion = () => {
                           : "I have read and agree to the Privacy Policy"}
                       </p>
                     </Flex>
+                  </div>
+                  <div>
+                    <Link to={"/Login"}>
+                      <p className="font-DMsans text-base font-normal text-secondary_font_color underline hover:text-green-400">
+                        i have an already Account
+                      </p>
+                    </Link>
                   </div>
                   <div>
                     <Flex className={"items-center gap-x-10"}>

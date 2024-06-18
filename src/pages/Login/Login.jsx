@@ -3,6 +3,7 @@ import BreadCrumd from "../../Component/CommonConponent/BreadCrumb/BreadCrumb";
 import Flex from "../../Component/CommonConponent/Flex";
 import LoginComponent from "../../Component/LoginComponent/LoginComponent";
 import Button from "../../Component/CommonConponent/Button";
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <div className="py-20">
@@ -36,12 +37,14 @@ const Login = () => {
                   standard dummy text ever since the.
                 </p>
                 <div>
-                  <Button
-                    title={"Continue"}
-                    className={
-                      " bg-main_font_color px-20 py-4 font-DMsans text-sm font-bold text-main_bg_color"
-                    }
-                  />
+                  <Link to={"/Registrtion"}>
+                    <Button
+                      title={"Sign Up"}
+                      className={
+                        " bg-main_font_color px-20 py-4 font-DMsans text-sm font-bold text-main_bg_color"
+                      }
+                    />
+                  </Link>
                 </div>
               </Flex>
             </div>
