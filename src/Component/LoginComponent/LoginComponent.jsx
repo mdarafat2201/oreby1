@@ -4,7 +4,9 @@ import Flex from "../CommonConponent/Flex";
 import Button from "../CommonConponent/Button";
 import { CheckEmail } from "../../../Utils/Utils";
 import { Bounce, toast } from "react-toastify";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 const LoginComponent = () => {
+  const auth = getAuth();
   const [Lodion, setLodion] = useState(false);
   const [InputLoginValue, setInputLoginValue] = useState({
     email: "",
@@ -47,17 +49,25 @@ const LoginComponent = () => {
         email: "",
         password: "",
       });
-      toast(`Form Post Don`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userInfo) => {
+          console.log(userInfo);
+          toast(`Form Post Don`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        })
+        .catch((err) => {
+          console.log(err.massage);
+        });
       setLodion(false);
     }
   };

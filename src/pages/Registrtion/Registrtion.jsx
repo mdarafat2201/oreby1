@@ -9,6 +9,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
+import { CheckEmail } from "../../../Utils/Utils";
 import { toast, Bounce } from "react-toastify";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../Firebase/FirebaseConfig";
@@ -79,7 +80,7 @@ const Registrtion = () => {
         ...userInfoError,
         FirstNameError: "First Name missing",
       });
-    } else if (!Email) {
+    } else if (!Email || !CheckEmail(Email)) {
       setuserInfoError({
         ...userInfoError,
         FirstNameError: "",
