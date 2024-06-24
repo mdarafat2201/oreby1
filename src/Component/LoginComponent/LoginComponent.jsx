@@ -52,6 +52,9 @@ const LoginComponent = () => {
 
       signInWithEmailAndPassword(auth, email, password)
         .then((userInfo) => {
+          // Signed in
+          const user = userInfo.user;
+          // ...
           console.log(userInfo);
           toast(`Form Post Don`, {
             position: "top-right",

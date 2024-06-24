@@ -7,4 +7,10 @@ function CheckEmail(email) {
 function CheckWordInMessage(message) {
   return message.length > 100 ? false : true;
 }
-export { CheckEmail, CheckWordInMessage };
+function CheckPassword(Password) {
+  const patternPassword =
+    /^(?=.*\d)(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹])(?=.*[a-z])(?=.*[A-Z]).{5,10}$/;
+  let isPasswordValidate = patternPassword();
+  return isPasswordValidate;
+}
+export { CheckEmail, CheckWordInMessage, CheckPassword };

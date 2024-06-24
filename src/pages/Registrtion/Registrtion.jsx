@@ -9,7 +9,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
-import { CheckEmail } from "../../../Utils/Utils";
+import { CheckEmail, CheckPassword } from "../../../Utils/Utils";
 import { toast, Bounce } from "react-toastify";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../Firebase/FirebaseConfig";
@@ -238,7 +238,9 @@ const Registrtion = () => {
             subribeYes: false,
             subribeNo: false,
           });
-          Navigate("/Login");
+          setTimeout(() => {
+            Navigate("/Login");
+          }, 3000);
         });
     }
   };
