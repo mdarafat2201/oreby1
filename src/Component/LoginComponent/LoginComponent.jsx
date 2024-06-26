@@ -4,8 +4,14 @@ import Flex from "../CommonConponent/Flex";
 import Button from "../CommonConponent/Button";
 import { CheckEmail } from "../../../Utils/Utils";
 import { Bounce, toast } from "react-toastify";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 const LoginComponent = () => {
+  const navigate = useNavigate();
   const auth = getAuth();
   const [Lodion, setLodion] = useState(false);
   const [InputLoginValue, setInputLoginValue] = useState({
@@ -52,11 +58,31 @@ const LoginComponent = () => {
 
       signInWithEmailAndPassword(auth, email, password)
         .then((userInfo) => {
-          // Signed in
-          const user = userInfo.user;
-          // ...
-          console.log(userInfo);
-          toast(`Form Post Don`, {
+          onAuthStateChanged(auth, (user) => {
+            if (user.emailVerified) {
+              navigate("/Checkout");
+            } else {
+              toast(`${user.email}Is Not Verified Please chack your Email`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
+            }
+          });
+          // // Signed in
+          // const user = userInfo.user;
+
+          // // ...
+          // console.log(user);
+        })
+        .catch((err) => {
+          toast(`${err.code}`, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -67,9 +93,7 @@ const LoginComponent = () => {
             theme: "light",
             transition: Bounce,
           });
-        })
-        .catch((err) => {
-          console.log(err.massage);
+          console.log(err.code);
         });
       setLodion(false);
     }
