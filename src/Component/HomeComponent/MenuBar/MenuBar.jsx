@@ -12,6 +12,7 @@ import {
   RemoveCartItem,
   getTotal,
 } from "../../../Redux/AllSlice/AddtoCart/AddtoCart";
+import { FetcherProduct } from "../../../Redux/AllSlice/ProductSlice/ProductSlice";
 
 const MenuBar = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const MenuBar = () => {
   const [Cart, setCart] = useState(false);
   const MenuRef = useRef();
   const CartRef = useRef();
+  const [AllProducts, setAllProducts] = useState([]);
 
   const navigate = useNavigate();
   const Dispatch = useDispatch();
@@ -62,8 +64,17 @@ const MenuBar = () => {
       }
     });
   }, []);
+  useEffect(() => {
+    dispatch(FetcherProduct("https://dummyjson.com/products"));
+  }, []);
 
-  //Menu Ref funtionlity
+  const { data, status } = useSelector((state) => state.product);
+
+  useEffect(() => {
+    if (status.payload === "IDLE") {
+      setAllProducts(data.payload.products);
+    }
+  }, [status.payload, data.payload]);
 
   /**
    * todo : take all product  from redux
@@ -75,6 +86,17 @@ const MenuBar = () => {
   useEffect(() => {
     Dispatch(getTotal());
   }, [CartItem]);
+  const handelSearch = (e) => {
+    const { value } = e.target;
+    if (value) {
+      const searchrasult = AllProducts.filter((product) => {
+        product.title.toLowerCase();
+      });
+      console.log(searchrasult);
+    } else {
+      console.log("no searh rasult");
+    }
+  };
 
   return (
     <>
@@ -125,7 +147,7 @@ const MenuBar = () => {
               )}
             </Flex>
 
-            <Serach placeholder={"Search Products"} />
+            <Serach placeholder={"Search Products"} onSerch={handelSearch} />
             <Flex className={" gap-x-2 sm:gap-x-2"}>
               <div className="relative">
                 <div onClick={HandleAccount}>
