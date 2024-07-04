@@ -22,6 +22,7 @@ const MenuBar = () => {
   const MenuRef = useRef();
   const CartRef = useRef();
   const [AllProducts, setAllProducts] = useState([]);
+  const [seaRchrasult, setseaRchrasult] = useState([]);
 
   const navigate = useNavigate();
   const Dispatch = useDispatch();
@@ -83,21 +84,23 @@ const MenuBar = () => {
   const { CartItem, totoalCartItem, TotalAmount } = useSelector(
     (state) => state.Cart,
   );
+
   useEffect(() => {
     Dispatch(getTotal());
   }, [CartItem]);
   const handelSearch = (e) => {
     const { value } = e.target;
     if (value) {
-      const searchrasult = AllProducts.filter((product) => {
-        product.title.toLowerCase();
-      });
-      console.log(searchrasult);
+      const searchrasult = AllProducts.filter((product) =>
+        product.title.toLowerCase().includes(value.toLowerCase()),
+      );
+
+      setseaRchrasult(searchrasult);
     } else {
-      console.log("no searh rasult");
+      setseaRchrasult([]);
     }
   };
-
+  console.log(seaRchrasult);
   return (
     <>
       <div className="bg-secondary_bg_color px-5 py-5" ref={MenuRef}>
