@@ -13,6 +13,7 @@ import {
   getTotal,
 } from "../../../Redux/AllSlice/AddtoCart/AddtoCart";
 import { FetcherProduct } from "../../../Redux/AllSlice/ProductSlice/ProductSlice";
+import SearchResult from "../../CommonConponent/SearchResult/SearchResult";
 
 const MenuBar = () => {
   const dispatch = useDispatch();
@@ -100,10 +101,16 @@ const MenuBar = () => {
       setseaRchrasult([]);
     }
   };
-  console.log(seaRchrasult);
+  /**
+   * todo: hendletopurder funtion impimen
+   */
+  const hendletopurder = (item) => {
+    setseaRchrasult([]);
+    navigate(`/Product-Details/${item.id}`);
+  };
   return (
     <>
-      <div className="bg-secondary_bg_color px-5 py-5" ref={MenuRef}>
+      <div className="relative bg-secondary_bg_color px-5 py-5" ref={MenuRef}>
         <div className="container">
           <Flex className={"items-center justify-between gap-x-3"}>
             <Flex className="relative ">
@@ -149,8 +156,17 @@ const MenuBar = () => {
                 </div>
               )}
             </Flex>
+            <div></div>
 
             <Serach placeholder={"Search Products"} onSerch={handelSearch} />
+            {seaRchrasult.length > 0 && (
+              <SearchResult
+                className=" absolute left-[524px] top-[86px] z-10 w-[550px] bg-gray-200 px-5 py-3 "
+                SeaRchrasult={seaRchrasult}
+                onTopourde={hendletopurder}
+              />
+            )}
+
             <Flex className={" gap-x-2 sm:gap-x-2"}>
               <div className="relative">
                 <div onClick={HandleAccount}>
