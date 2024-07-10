@@ -1,7 +1,7 @@
 import React from "react";
 import { FcSearch } from "react-icons/fc";
 import Flex from "./Flex";
-const Serach = ({ placeholder, onSerch }) => {
+const Serach = ({ placeholder, onSerch, onpurtfilt }) => {
   return (
     <>
       <Flex>
@@ -13,7 +13,7 @@ const Serach = ({ placeholder, onSerch }) => {
             onChange={onSerch}
           />
           <div className=" absolute right-5 top-1/2 -translate-y-2/4 text-2xl">
-            <FcSearch />
+            <FcSearch onClick={onpurtfilt} />
           </div>
         </div>
       </Flex>

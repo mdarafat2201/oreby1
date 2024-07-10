@@ -108,6 +108,16 @@ const MenuBar = () => {
     setseaRchrasult([]);
     navigate(`/Product-Details/${item.id}`);
   };
+  /**
+   * todo: hendletopurderfilt funtion impimen
+   */
+  const hendletopurderfilt = () => {
+    if (seaRchrasult) {
+      navigate(`/Product-Details/${seaRchrasult.id}`);
+    }
+    // setseaRchrasult([]);
+    // navigate(`/Product-Details/${.id}`);
+  };
   return (
     <>
       <div className="relative bg-secondary_bg_color px-5 py-5" ref={MenuRef}>
@@ -158,7 +168,11 @@ const MenuBar = () => {
             </Flex>
             <div></div>
 
-            <Serach placeholder={"Search Products"} onSerch={handelSearch} />
+            <Serach
+              placeholder={"Search Products"}
+              onSerch={handelSearch}
+              onpurtfilt={hendletopurderfilt}
+            />
             {seaRchrasult.length > 0 && (
               <SearchResult
                 className=" absolute left-[524px] top-[86px] z-10 w-[550px] bg-gray-200 px-5 py-3 "

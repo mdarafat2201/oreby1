@@ -25,7 +25,7 @@ const ShopCatagories = ({
       );
     });
   };
-
+  console.log(showCatagoriesToggle);
   return (
     <>
       <div className=" mb-5 cursor-pointer" onClick={HanldeCatagories}>
@@ -48,7 +48,7 @@ const ShopCatagories = ({
         <div>
           <div className="divide-y-2 divide-solid divide-[#f0f0f0] ">
             {CatagorseData?.map((item, index) =>
-              item.subcategores.length > 0 ? (
+              item.subcategores > 0 ? (
                 <div>
                   <div
                     className="cursor-pointer px-2 py-5 "
