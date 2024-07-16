@@ -18,19 +18,37 @@ const ShopLeft = ({ className }) => {
       setallProducts(data.payload.products);
     }
   }, [status.payload, data.payload]);
-  let arr = [];
-  allProducts.map((product) => {
-    arr.push({
-      id: product.id,
-      title: product.category,
-      subcategory: product.tags,
-    });
+  let categoryarr = [];
+  let categoriesSet = new Set();
+  allProducts.forEach((product) => {
+    if (!categoriesSet.has(product.category)) {
+      categoryarr.push({
+        id: product.id,
+        title: product.category,
+        subcategory: product.tags,
+      });
+      categoriesSet.add(product.category);
+    }
   });
-  console.log(arr);
+
+  // barund=======>
+  let brandarr = [];
+  let brandSet = new Set();
+  allProducts.forEach((product) => {
+    if (!brandSet.has(product.brand)) {
+      brandarr.push({
+        id: product.id,
+        title: product.brand,
+      });
+      brandSet.add(product.brand);
+    }
+  });
+  console.log(brandarr);
+
   return (
     <div className={className}>
       <ShopCatagories
-        CatagorseData={Catagorise ? Catagorise : []}
+        CatagorseData={categoryarr ? categoryarr : []}
         ShopLeftCategoryTitle={"Shop by Category"}
         dropdownis={false}
         dropdownisExpandis={true}
@@ -42,7 +60,7 @@ const ShopLeft = ({ className }) => {
         dropdownisExpandis={false}
       />
       <ShopbyBrand
-        ShopByBrandData={ShopBrand ? ShopBrand : []}
+        ShopByBrandData={brandarr ? brandarr : []}
         ShopLeftBrandTitle={"Shop by Brand"}
         dropdownis={true}
         dropdownisExpandis={false}

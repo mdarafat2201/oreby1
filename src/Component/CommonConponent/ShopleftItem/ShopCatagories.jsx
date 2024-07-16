@@ -15,7 +15,7 @@ const ShopCatagories = ({
     setshowCatagories(!showCatagories);
   };
   const [showCatagoriesToggle, setshowCatagoriesToggle] = useState(
-    CatagorseData.map(() => false),
+    CatagorseData.map(() => !true),
   );
 
   const HanldeCategoryToggle = (id) => {
@@ -48,7 +48,7 @@ const ShopCatagories = ({
         <div>
           <div className="divide-y-2 divide-solid divide-[#f0f0f0] ">
             {CatagorseData?.map((item, index) =>
-              item.subcategores > 0 ? (
+              item.subcategory.length > 0 ? (
                 <div>
                   <div
                     className="cursor-pointer px-2 py-5 "
@@ -64,23 +64,29 @@ const ShopCatagories = ({
                   </div>
                   <div className={`${showCatagoriesToggle && "mb-4"}`}>
                     {showCatagoriesToggle[index] &&
-                      item.subcategores.map((subitem) => (
-                        <div
-                          className="cursor-pointer px-3 py-2"
-                          key={subitem.id}
-                        >
-                          <h2 className="text-base font-normal text-secondary_font_color">
-                            {subitem.title}
-                          </h2>
-                        </div>
-                      ))}
+                      item.subcategory.map(
+                        (subitem) =>
+                          subitem !== item.title && (
+                            <div
+                              className="cursor-pointer px-3 py-2"
+                              key={subitem.id}
+                            >
+                              <h2 className="text-base font-normal text-secondary_font_color">
+                                {subitem}
+                              </h2>
+                            </div>
+                          ),
+                      )}
                   </div>
                 </div>
               ) : (
                 <div className="cursor-pointer px-2 py-5">
-                  <h2 className="text-base font-normal text-secondary_font_color">
-                    {item.title}
-                  </h2>
+                  <Flex className={"items-center justify-between"}>
+                    <h2 className="text-base font-normal text-secondary_font_color">
+                      {item.title}
+                    </h2>
+                    <FaPlus className="text-secondary_font_color" />
+                  </Flex>
                 </div>
               ),
             )}
